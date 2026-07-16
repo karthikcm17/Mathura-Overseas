@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
       popupTimer = setTimeout(function () {
         popup.classList.add('show');
         sessionStorage.setItem('mo_popup_shown', '1');
-      }, 45000);
+      }, 20000);
     }
     function closePopup() {
       popup.classList.remove('show');
