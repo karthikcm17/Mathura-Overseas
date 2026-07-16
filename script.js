@@ -146,6 +146,15 @@ document.addEventListener('DOMContentLoaded', function () {
     update();
   });
 
+  /* ---------- PWA: register service worker (offline support + installability) ---------- */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('service-worker.js').catch(function (err) {
+        console.warn('Service worker registration failed:', err);
+      });
+    });
+  }
+
   /* ---------- Social dock peek handle (mobile/tablet slide in/out) ---------- */
   const socialDock = document.getElementById('socialDock');
   const socialHandle = document.getElementById('socialDockHandle');
@@ -175,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
       popupTimer = setTimeout(function () {
         popup.classList.add('show');
         sessionStorage.setItem('mo_popup_shown', '1');
-      }, 30000);
+      }, 45000);
     }
     function closePopup() {
       popup.classList.remove('show');

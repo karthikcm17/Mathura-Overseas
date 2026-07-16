@@ -9,13 +9,19 @@
     content="Mathura Overseas guides Indian students to NMC/WHO-recognised MBBS programs in the Philippines, Timor-Leste and Uzbekistan — transparent fees, no donation.">
 
   <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#10453C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mathura Overseas">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -227,416 +233,177 @@
   </section>
 
   <!-- TOP / PRIORITY DESTINATIONS -->
-  <section id="countries" class="section-pad">
+  <!-- DESTINATIONS: colorful university cards, grouped by country, each linking to its own detail page -->
+  <section id="countries" class="section-pad uni-cards-section">
     <div class="container">
       <div class="section-heading reveal">
         <span class="eyebrow">Where you'll study</span>
-        <h2>Our three priority destinations</h2>
-        <p>Ranked by value, safety and outcomes for Indian medical aspirants — starting with our most-recommended.</p>
+        <h2 class="destinations-h2">Explore Our Partner Universities</h2>
+        <p>Nine NMC/WHO-recognised universities across our three priority destinations — tap any card for full details, fees, and gallery.</p>
       </div>
 
-      <div class="row g-4">
-        <!-- PHILIPPINES -->
-        <div class="col-12">
-          <div class="priority-card p-philippines reveal">
-            <div class="priority-head">
-              <div class="d-flex align-items-center gap-3">
-                <span class="rank">01</span>
-                <div><span class="flag">🇵🇭</span>
-                  <h3 class="d-inline">Philippines</h3>
-                  <div class="small text-white-50">US-based curriculum · English medium · 5 partner medical schools
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="priority-body">
-              <span class="pill">NMC Approved</span><span class="pill">WHO Listed</span><span class="pill">ECFMG /
-                FAIMER</span><span class="pill">No Donation</span>
-              <p class="text-muted mb-3">Our top recommendation — the Philippines pairs a genuinely American-style MD
-                curriculum with a climate, food culture and Indian-student community that feels like a soft landing
-                rather than a leap abroad.</p>
-
-              <div class="uni-carousel">
-                <div class="uni-viewport">
-                  <div class="uni-track">
-                    <!-- 1: Flagship -->
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#0D362F,#1E6F5E);">
-                          <span class="side-ribbon">Flagship</span>
-                          <i class="bi bi-mortarboard-fill side-icon"></i>
-                          <div class="side-est">Est. 1976</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Davao Medical School Foundation</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Davao City, Philippines</div>
-                          <div class="pills-row"><span class="banner-pill">6.5 yrs</span><span class="banner-pill">NMC /
-                              WHO</span><span class="banner-pill">ECFMG</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Cadaver labs &amp; 3D Anatomage table</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Highest FMGE/NExT pass rate</li>
-                            <li><i class="bi bi-check-circle-fill"></i> 14-storey hostel, 2 min from class</li>
-                            <li><i class="bi bi-check-circle-fill"></i> No donation, tuition ~$5,100/yr</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Our top overall pick <i
-                                class="bi bi-star-fill text-marigold"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 2: Heritage -->
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#7A4B1E,#D97706);">
-                          <span class="side-ribbon">Heritage</span>
-                          <i class="bi bi-bank2 side-icon"></i>
-                          <div class="side-est">Est. 1919</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>UV Gullas College of Medicine</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Cebu City, University of the Visayas</div>
-                          <div class="pills-row"><span class="banner-pill">5.8 yrs</span><span class="banner-pill">106+
-                              yrs legacy</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> 1,400+ Indian students on campus</li>
-                            <li><i class="bi bi-check-circle-fill"></i> NMC, WHO, ECFMG, FAIMER, USMLE</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Air-conditioned hostels, Indian mess</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Highest FMGE pass rate on record</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">A century of medical education <i
-                                class="bi bi-award text-marigold"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 3: Value -->
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#1E4E5A,#3C8C9E);">
-                          <span class="side-ribbon">Best Value</span>
-                          <i class="bi bi-cash-coin side-icon"></i>
-                          <div class="side-est">Est. 1969</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Lyceum Northwestern University</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Dagupan City, "crime-free zone"</div>
-                          <div class="pills-row"><span class="banner-pill">₹1.4L / sem</span><span
-                              class="banner-pill">5.6 yrs</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Among the most affordable in the country</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Anatomage table &amp; simulation labs</li>
-                            <li><i class="bi bi-check-circle-fill"></i> 250+ Indian students already enrolled</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Separate boys'/girls' hostels</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="#spotlight" class="banner-btn">See Full Spotlight</a>
-                            <span class="text-muted small">Lowest fees on our panel <i
-                                class="bi bi-piggy-bank-fill text-marigold"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 4: Diverse -->
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#5B3A8C,#8B5FBF);">
-                          <span class="side-ribbon">Most Diverse</span>
-                          <i class="bi bi-globe-americas side-icon"></i>
-                          <div class="side-est">Est. 1946</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Southwestern University PHINMA</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Cebu City, Philippines</div>
-                          <div class="pills-row"><span class="banner-pill">34 countries</span><span
-                              class="banner-pill">5 yrs</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Own teaching hospital on campus</li>
-                            <li><i class="bi bi-check-circle-fill"></i> NMC, WHO, WFME, ECFMG, FAIMER</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Students from 34 countries</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Guidance counsellors on staff</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Most international student body <i
-                                class="bi bi-people-fill text-marigold"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 5: Faith / values -->
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#7A1E2E,#B23A4E);">
-                          <span class="side-ribbon">Safest City</span>
-                          <i class="bi bi-shield-heart side-icon"></i>
-                          <div class="side-est">Est. 1954</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Brokenshire College of Medicine</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Davao City, Philippines</div>
-                          <div class="pills-row"><span class="banner-pill">5.5 yrs</span><span
-                              class="banner-pill">200-bed hospital</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> United Church of Christ heritage</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Own affiliated teaching hospital</li>
-                            <li><i class="bi bi-check-circle-fill"></i> In the safest city in the Philippines</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Indian food facilities on campus</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Safety-first choice <i
-                                class="bi bi-shield-check text-marigold"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="uni-nav-btn uni-nav-prev" aria-label="Previous university"><i
-                    class="bi bi-chevron-left"></i></button>
-                <button type="button" class="uni-nav-btn uni-nav-next" aria-label="Next university"><i
-                    class="bi bi-chevron-right"></i></button>
-                <div class="uni-dots"></div>
-              </div>
-            </div>
+      <!-- PHILIPPINES -->
+      <div class="country-group reveal">
+        <div class="country-group-head">
+          <span class="flag-big">🇵🇭</span>
+          <div>
+            <h3>Philippines</h3>
+            <div class="sub">US-based curriculum · English medium · 5 partner medical schools</div>
           </div>
         </div>
-
-        <!-- TIMOR-LESTE -->
-        <div class="col-lg-6">
-          <div class="priority-card p-timor reveal h-100">
-            <div class="priority-head">
-              <div class="d-flex align-items-center gap-3">
-                <span class="rank">02</span>
-                <div><span class="flag">🇹🇱</span>
-                  <h3 class="d-inline">Timor-Leste</h3>
-                  <div class="small text-white-50">Indian curriculum · English medium · Low competition</div>
-                </div>
+        <div class="uni-card-grid">
+          <a href="davao.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600'); background-color:#0D362F;">
+                <span class="uni-card-ribbon">Flagship</span>
+                <div class="uni-card-icon"><i class="bi bi-mortarboard-fill"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Davao Medical School Foundation</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Davao City · Est. 1976</div>
+                <div class="pills"><span>6.5 yrs</span><span>NMC/WHO</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
               </div>
             </div>
-            <div class="priority-body">
-              <span class="pill">NMC / ECFMG / FAIMER</span><span class="pill">Catholic University</span><span
-                class="pill">Est. 2021</span>
-              <div class="uni-carousel mt-3">
-                <div class="uni-viewport">
-                  <div class="uni-track">
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#7A4B1E,#C97A2B);">
-                          <span class="side-ribbon">Catholic University</span>
-                          <i class="bi bi-bank2 side-icon"></i>
-                          <div class="side-est">Est. 2021</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Universidade Católica Timorense (UCT)</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Dili, Timor-Leste</div>
-                          <div class="pills-row"><span class="banner-pill">5.5 yrs</span><span
-                              class="banner-pill">Indian curriculum</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Built on the Indian medical curriculum</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Faculty from India, USA, Cuba &amp; Timor-Leste
-                            </li>
-                            <li><i class="bi bi-check-circle-fill"></i> Total cost ~$35,000–40,000 (₹29–33L)</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Tuition waivers for top performers</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Low-competition, Indian-style syllabus</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          </a>
+          <a href="uv-gullas.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600'); background-color:#7A4B1E;">
+                <span class="uni-card-ribbon">Heritage</span>
+                <div class="uni-card-icon"><i class="bi bi-bank2"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>UV Gullas College of Medicine</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Cebu City · Est. 1919</div>
+                <div class="pills"><span>5.8 yrs</span><span>106+ yrs</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- UZBEKISTAN -->
-        <div id="uzbekistan" class="col-lg-6">
-          <div class="priority-card p-uzbekistan reveal h-100">
-            <div class="priority-head">
-              <div class="d-flex align-items-center gap-3">
-                <span class="rank">03</span>
-                <div><span class="flag">🇺🇿</span>
-                  <h3 class="d-inline">Uzbekistan</h3>
-                  <div class="small text-white-50">Silk Road cities · 3 partner institutes</div>
-                </div>
+          </a>
+          <a href="lyceum.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600'); background-color:#1E4E5A;">
+                <span class="uni-card-ribbon">Best Value</span>
+                <div class="uni-card-icon"><i class="bi bi-cash-coin"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Lyceum Northwestern University</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Dagupan City · Est. 1969</div>
+                <div class="pills"><span>₹1.4L/sem</span><span>5.6 yrs</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
               </div>
             </div>
-            <div class="priority-body">
-              <span class="pill">NMC / WHO / FAIMER</span><span class="pill">No IELTS Required</span>
-              <p class="text-muted small mb-3">A 6-year program (5 years + 1-year internship) at government medical
-                institutes, with a large, established Indian student community across three cities.</p>
-              <div class="uni-carousel">
-                <div class="uni-viewport">
-                  <div class="uni-track">
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#16324F,#3C6E91);">
-                          <span class="side-ribbon">Capital City</span>
-                          <i class="bi bi-building side-icon"></i>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Tashkent Medical Academy</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Tashkent, Uzbekistan</div>
-                          <div class="pills-row"><span class="banner-pill">6 yrs</span><span
-                              class="banner-pill">~$3,500–5,000/yr</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Strong specialist tracks</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Capital-city facilities</li>
-                            <li><i class="bi bi-check-circle-fill"></i> NMC, WHO, ECFMG, FAIMER recognised</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Best for capital-city exposure</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#7A4B1E,#D97706);">
-                          <span class="side-ribbon">Most Indian Students</span>
-                          <i class="bi bi-people-fill side-icon"></i>
-                          <div class="side-est">Est. 1930</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Samarkand State Medical University</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Samarkand, Uzbekistan</div>
-                          <div class="pills-row"><span class="banner-pill">6 yrs</span><span
-                              class="banner-pill">~$3,500–4,500/yr</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> 50+ full-time Indian faculty</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Largest Indian student community</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Balanced cost, city &amp; community</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Most popular with Indian families</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="uni-slide">
-                      <div class="uni-banner">
-                        <div class="uni-banner-side" style="background:linear-gradient(160deg,#0D362F,#1E6F5E);">
-                          <span class="side-ribbon">Best FMGE Rate</span>
-                          <i class="bi bi-award side-icon"></i>
-                          <div class="side-est">Est. 1990</div>
-                        </div>
-                        <div class="uni-banner-main">
-                          <h4>Bukhara State Medical Institute</h4>
-                          <div class="loc"><i class="bi bi-geo-alt-fill"></i> Bukhara, Uzbekistan</div>
-                          <div class="pills-row"><span class="banner-pill">6 yrs</span><span
-                              class="banner-pill">~$3,200–5,250/yr</span></div>
-                          <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Top FMGE pass rate regionally</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Most budget-friendly of the three</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Calmer, less urban student life</li>
-                          </ul>
-                          <div class="uni-banner-cta">
-                            <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply Now</a>
-                            <span class="text-muted small">Best for controlled budgets</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="uni-nav-btn uni-nav-prev" aria-label="Previous university"><i
-                    class="bi bi-chevron-left"></i></button>
-                <button type="button" class="uni-nav-btn uni-nav-next" aria-label="Next university"><i
-                    class="bi bi-chevron-right"></i></button>
-                <div class="uni-dots"></div>
+          </a>
+          <a href="southwestern.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600'); background-color:#5B3A8C;">
+                <span class="uni-card-ribbon">Most Diverse</span>
+                <div class="uni-card-icon"><i class="bi bi-globe-americas"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Southwestern University PHINMA</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Cebu City · Est. 1946</div>
+                <div class="pills"><span>34 countries</span><span>5 yrs</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
               </div>
             </div>
-          </div>
+          </a>
+          <a href="brokenshire.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600'); background-color:#7A1E2E;">
+                <span class="uni-card-ribbon">Safest City</span>
+                <div class="uni-card-icon"><i class="bi bi-shield-heart"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Brokenshire College of Medicine</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Davao City · Est. 1954</div>
+                <div class="pills"><span>5.5 yrs</span><span>200-bed hospital</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
 
-      <!-- More destinations -->
-      <div id="others" class="mt-5">
-        <h5 class="text-jade mb-4 reveal">Other Destinations</h5>
-        <div class="banner-grid cols-4">
-          <div class="banner-card">
-            <div class="banner-top"><img src="https://images.unsplash.com/photo-1547448415-e9f5b28e570d?w=500"
-                alt="Russia">
-              <div class="banner-tint"></div><span class="banner-ribbon">Top Choice</span>
-            </div>
-            <div class="banner-body">
-              <h6>🇷🇺 Russia — MBBS</h6>
-              <div class="banner-pills"><span class="banner-pill">WHO Approved</span><span class="banner-pill">NMC
-                  Listed</span><span class="banner-pill">IMED</span></div>
-              <ul class="banner-list">
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Duration:</strong> 6 yrs (incl. internship)</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Fees:</strong> $3,000–6,000/yr</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Entrance:</strong> No exam required</li>
-              </ul>
-              <div class="banner-callout"><i class="bi bi-info-circle-fill"></i> Top cities: Moscow, Kazan, Volgograd
+      <!-- TIMOR-LESTE -->
+      <div class="country-group reveal">
+        <div class="country-group-head">
+          <span class="flag-big">🇹🇱</span>
+          <div>
+            <h3>Timor-Leste</h3>
+            <div class="sub">Indian curriculum · English medium · Low competition</div>
+          </div>
+        </div>
+        <div class="uni-card-grid">
+          <a href="uct-timor.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600'); background-color:#7A4B1E;">
+                <span class="uni-card-ribbon">Catholic University</span>
+                <div class="uni-card-icon"><i class="bi bi-bank2"></i></div>
               </div>
-              <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply for Russia</a>
+              <div class="uni-card-body">
+                <h5>Universidade Católica Timorense</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Dili · Est. 2021</div>
+                <div class="pills"><span>5.5 yrs</span><span>Indian curriculum</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
+              </div>
             </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- UZBEKISTAN -->
+      <div id="uzbekistan" class="country-group reveal">
+        <div class="country-group-head">
+          <span class="flag-big">🇺🇿</span>
+          <div>
+            <h3>Uzbekistan</h3>
+            <div class="sub">Silk Road cities · 3 partner institutes · No IELTS required</div>
           </div>
-          <div class="banner-card">
-            <div class="banner-top"><img src="https://images.unsplash.com/photo-1590073844006-33379778ae09?w=500"
-                alt="Georgia">
-              <div class="banner-tint"></div><span class="banner-ribbon">Popular</span>
+        </div>
+        <div class="uni-card-grid">
+          <a href="tashkent.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1653022887986-e5ebca6aa6cf?w=600'); background-color:#16324F;">
+                <span class="uni-card-ribbon">Capital City</span>
+                <div class="uni-card-icon"><i class="bi bi-building"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Tashkent Medical Academy</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Tashkent</div>
+                <div class="pills"><span>6 yrs</span><span>$3.5-5K/yr</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
+              </div>
             </div>
-            <div class="banner-body">
-              <h6>🇬🇪 Georgia — MBBS</h6>
-              <div class="banner-pills"><span class="banner-pill">European</span><span class="banner-pill">WHO
-                  Listed</span><span class="banner-pill">Safe</span></div>
-              <ul class="banner-list">
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Duration:</strong> 6 yrs MD program</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Fees:</strong> $5,000–8,000/yr</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Standard:</strong> European education</li>
-              </ul>
-              <div class="banner-callout"><i class="bi bi-star-fill"></i> Best for quality seekers</div>
-              <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply for Georgia</a>
+          </a>
+          <a href="samarkand.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1653022887986-e5ebca6aa6cf?w=600'); background-color:#7A4B1E;">
+                <span class="uni-card-ribbon">Most Indian Students</span>
+                <div class="uni-card-icon"><i class="bi bi-people-fill"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Samarkand State Medical University</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Samarkand · Est. 1930</div>
+                <div class="pills"><span>6 yrs</span><span>$3.5-4.5K/yr</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
+              </div>
             </div>
-          </div>
-          <div class="banner-card">
-            <div class="banner-top"><img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?w=500"
-                alt="Kazakhstan">
-              <div class="banner-tint"></div><span class="banner-ribbon">Near India</span>
+          </a>
+          <a href="bukhara.html" class="uni-card-link">
+            <div class="uni-card">
+              <div class="uni-card-photo" style="background-image:url('https://images.unsplash.com/photo-1653022887986-e5ebca6aa6cf?w=600'); background-color:#0D362F;">
+                <span class="uni-card-ribbon">Best FMGE Rate</span>
+                <div class="uni-card-icon"><i class="bi bi-award"></i></div>
+              </div>
+              <div class="uni-card-body">
+                <h5>Bukhara State Medical Institute</h5>
+                <div class="loc"><i class="bi bi-geo-alt-fill"></i> Bukhara · Est. 1990</div>
+                <div class="pills"><span>6 yrs</span><span>$3.2-5.25K/yr</span></div>
+                <div class="uni-card-cta">View Details &amp; Fees <i class="bi bi-arrow-right"></i></div>
+              </div>
             </div>
-            <div class="banner-body">
-              <h6>🇰🇿 Kazakhstan — MBBS</h6>
-              <div class="banner-pills"><span class="banner-pill">NMC Approved</span><span
-                  class="banner-pill">Affordable</span></div>
-              <ul class="banner-list">
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Duration:</strong> 5–6 yrs</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Fees:</strong> $4,000–5,500/yr</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Culture:</strong> Similar to Indian</li>
-              </ul>
-              <div class="banner-callout"><i class="bi bi-lightning-fill"></i> Quick visa processing</div>
-              <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply for Kazakhstan</a>
-            </div>
-          </div>
-          <div class="banner-card">
-            <div class="banner-top"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=500"
-                alt="Kyrgyzstan">
-              <div class="banner-tint"></div><span class="banner-ribbon">Emerging</span>
-            </div>
-            <div class="banner-body">
-              <h6>🇰🇬 Kyrgyzstan — MBBS</h6>
-              <div class="banner-pills"><span class="banner-pill">WHO Listed</span><span
-                  class="banner-pill">Budget</span><span class="banner-pill">Safe</span></div>
-              <ul class="banner-list">
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Duration:</strong> 5–6 yrs</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Fees:</strong> $3,500–4,500/yr</li>
-                <li><i class="bi bi-check-circle-fill"></i> <strong>Budget:</strong> Most affordable</li>
-              </ul>
-              <div class="banner-callout"><i class="bi bi-currency-dollar"></i> Most budget-friendly option</div>
-              <a href="apply.html" target="_blank" rel="noopener" class="banner-btn">Apply for Kyrgyzstan</a>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -1008,9 +775,6 @@
         </div>
       </div>
     </div>
-    </div>
-
-    </div>
   </section>
 
   <!-- CTA -->
@@ -1139,18 +903,17 @@
         <div class="col-lg-3 col-md-6">
           <h6 class="mb-3">Destinations</h6>
           <ul class="list-unstyled small">
-            <li class="mb-2"><a href="#spotlight">Philippines</a></li>
-            <li class="mb-2"><a href="#others">Georgia</a></li>
+            <li class="mb-2"><a href="#countries">Philippines</a></li>
+            <li class="mb-2"><a href="#countries">Timor-Leste</a></li>
             <li class="mb-2"><a href="#uzbekistan">Uzbekistan</a></li>
-            <li class="mb-2"><a href="#others">Kyrgyzstan</a></li>
-
-            
           </ul>
         </div>
         <div class="col-lg-3">
-          <h6 class="mb-3">Office Hours</h6>
-          <p class="text-white-50 small mb-1">Monday – Saturday, 9:00 AM – 7:00 PM</p>
-          <p class="text-white-50 small mb-0">Sunday: By appointment</p>
+          <h6 class="mb-3">Get the App</h6>
+          <div class="d-flex flex-column gap-2">
+            <a href="#" class="store-badge"><i class="bi bi-apple"></i><span>Download on the<br><strong>App Store</strong></span></a>
+            <a href="#" class="store-badge"><i class="bi bi-google-play"></i><span>Get it on<br><strong>Google Play</strong></span></a>
+          </div>
         </div>
       </div>
       <hr class="my-4" style="border-color:rgba(255,255,255,.15);">
@@ -1193,7 +956,7 @@
     class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 
 </html>
