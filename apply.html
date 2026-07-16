@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Now — Mathura Overseas</title>
+
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{ background: var(--jade); min-height:100vh; }
+  .apply-wrap{ min-height:100vh; display:flex; align-items:center; padding: 40px 0; }
+  .apply-card{ background:#fff; border-radius: var(--radius-lg); overflow:hidden; box-shadow: 0 30px 60px rgba(0,0,0,.3); }
+  .apply-side{
+    background: linear-gradient(160deg, #0D362F, #1E6F5E);
+    color:#fff; padding: 44px 34px; height:100%;
+  }
+  .apply-side .stamp{ border-color: rgba(255,255,255,.6); color:#fff; background:rgba(255,255,255,.06); }
+  .apply-side ul{ list-style:none; padding:0; margin-top:22px; }
+  .apply-side ul li{ padding:8px 0; display:flex; gap:10px; font-size:.92rem; color:rgba(255,255,255,.85); }
+  .apply-side ul li i{ color: var(--gold); }
+  .form-label{ font-weight:600; font-size:.85rem; color: var(--ink); }
+  .form-control, .form-select{ border-radius:10px; padding:10px 14px; border:1px solid #dfe3e2; }
+  .form-control:focus, .form-select:focus{ border-color: var(--jade); box-shadow: 0 0 0 3px rgba(16,69,60,.12); }
+  .success-panel{ display:none; text-align:center; padding: 30px 10px; }
+  .success-panel.show{ display:block; }
+  .success-check{ width:80px; height:80px; border-radius:50%; background: var(--jade-pale); color: var(--jade); display:flex; align-items:center; justify-content:center; font-size:2.4rem; margin:0 auto 18px; }
+  .ref-code{ font-family: var(--font-display); font-size:1.4rem; color: var(--jade); font-weight:700; letter-spacing:.05em; }
+  .close-tab{ position:fixed; top:18px; right:18px; z-index:50; }
+</style>
+</head>
+<body>
+
+<a href="#" onclick="window.close(); return false;" class="btn btn-sm btn-light close-tab shadow-sm"><i class="bi bi-x-lg"></i> Close</a>
+
+<div class="apply-wrap">
+  <div class="container">
+    <div class="apply-card row g-0">
+      <div class="col-lg-4 apply-side">
+        <span class="brand-mark" style="display:inline-flex;"><i class="bi bi-compass"></i></span>
+        <h3 class="text-white mt-3 mb-2">Mathura <span class="brand-accent">Overseas</span></h3>
+        <p style="color:rgba(255,255,255,.8);">Complete this form and one of our counsellors will call you within 24 hours — no obligation, no fees to enquire.</p>
+        <div class="stamp mt-4 mb-2"><span class="stamp-main">NMC</span><span>Verified<br>Partners</span></div>
+        <ul>
+          <li><i class="bi bi-check-circle-fill"></i> Free 1-on-1 counselling call</li>
+          <li><i class="bi bi-check-circle-fill"></i> Transparent fee comparison sheet</li>
+          <li><i class="bi bi-check-circle-fill"></i> No donation, no hidden costs</li>
+          <li><i class="bi bi-check-circle-fill"></i> Visa &amp; travel handled end-to-end</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="p-4 p-md-5">
+
+          <!-- FORM -->
+          <div id="formPanel">
+            <h4 class="text-jade mb-1">Start your application</h4>
+            <p class="text-muted small mb-4">Fields marked <span class="text-danger">*</span> are required.</p>
+
+            <!-- Real submission target: a hidden iframe, so this posts directly to
+                 your Google Apps Script Web App with no CORS restrictions. -->
+            <form id="applyForm" method="POST" target="hiddenFrame">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="fullName" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control" name="phone" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">City / State</label>
+                  <input type="text" class="form-control" name="city">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Preferred Destination <span class="text-danger">*</span></label>
+                  <select class="form-select" name="country" required>
+                    <option value="" selected disabled>Choose a country...</option>
+                    <option>Philippines</option>
+                    <option>Timor-Leste</option>
+                    <option>Uzbekistan</option>
+                    <option>Russia</option>
+                    <option>Georgia</option>
+                    <option>Kazakhstan</option>
+                    <option>Kyrgyzstan</option>
+                    <option>Not sure yet — need guidance</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Preferred University (optional)</label>
+                  <select class="form-select" name="university">
+                    <option value="" selected>No preference</option>
+                    <option>Davao Medical School Foundation</option>
+                    <option>UV Gullas College of Medicine</option>
+                    <option>Lyceum Northwestern University</option>
+                    <option>Southwestern University PHINMA</option>
+                    <option>Brokenshire College of Medicine</option>
+                    <option>National University of Timor-Leste (UNTL)</option>
+                    <option>Tashkent Medical Academy</option>
+                    <option>Samarkand State Medical University</option>
+                    <option>Bukhara State Medical Institute</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">NEET Score</label>
+                  <input type="text" class="form-control" name="neetScore" placeholder="e.g. 412">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">12th Percentage (PCB)</label>
+                  <input type="text" class="form-control" name="percentage" placeholder="e.g. 68%">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Message</label>
+                  <textarea class="form-control" name="message" rows="3" placeholder="Tell us anything that helps — budget, timeline, questions..."></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agree" required>
+                    <label class="form-check-label small text-muted" for="agree">
+                      I agree to be contacted by Mathura Overseas via call, email or WhatsApp regarding this enquiry.
+                    </label>
+                  </div>
+                </div>
+                <!-- honeypot for basic bot filtering -->
+                <input type="text" name="website" class="d-none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="submittedAt" id="submittedAt">
+                <input type="hidden" name="refCode" id="refCode">
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-marigold btn-lg w-100" id="submitBtn">
+                    <i class="bi bi-send me-2"></i>Submit Application
+                  </button>
+                  <p class="text-center text-muted small mt-2 mb-0">Your details are sent directly to our admissions sheet — nothing is stored on this device beyond a local confirmation copy.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- SUCCESS -->
+          <div id="successPanel" class="success-panel">
+            <div class="success-check"><i class="bi bi-check-lg"></i></div>
+            <h4 class="text-jade">Application received!</h4>
+            <p class="text-muted">A counsellor will call you within 24 hours. Your reference code:</p>
+            <div class="ref-code" id="refDisplay">—</div>
+            <button class="btn btn-ghost-jade mt-4" onclick="window.close()">Close this window</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- hidden iframe target so the form POST never navigates or CORS-blocks this tab -->
+<iframe name="hiddenFrame" style="display:none;" id="hiddenFrame"></iframe>
+
+<script src="apply.js"></script>
+</body>
+</html>
