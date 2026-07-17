@@ -247,27 +247,61 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Delayed application popup (once per browser session) ---------- */
-  const popup = document.getElementById('applyPopup');
-  if (popup) {
-    const alreadyShown = sessionStorage.getItem('mo_popup_shown');
-    let popupTimer = null;
-    if (!alreadyShown) {
-      popupTimer = setTimeout(function () {
-        popup.classList.add('show');
-        sessionStorage.setItem('mo_popup_shown', '1');
-      }, 45000);
-    }
-    function closePopup() {
-      popup.classList.remove('show');
-      if (popupTimer) clearTimeout(popupTimer);
-    }
-    const closeBtn = document.getElementById('popupClose');
-    const dismissBtn = document.getElementById('popupDismiss');
-    if (closeBtn) closeBtn.addEventListener('click', closePopup);
-    if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
-    popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
+  // /* ---------- Delayed application popup (once per browser session) ---------- */
+  // const popup = document.getElementById('applyPopup');
+  // if (popup) {
+  //   const alreadyShown = sessionStorage.getItem('mo_popup_shown');
+  //   let popupTimer = null;
+  //   if (!alreadyShown) {
+  //     popupTimer = setTimeout(function () {
+  //       popup.classList.add('show');
+  //       sessionStorage.setItem('mo_popup_shown', '1');
+  //     }, 15000);
+  //   }
+  //   function closePopup() {
+  //     popup.classList.remove('show');
+  //     if (popupTimer) clearTimeout(popupTimer);
+  //   }
+  //   const closeBtn = document.getElementById('popupClose');
+  //   const dismissBtn = document.getElementById('popupDismiss');
+  //   if (closeBtn) closeBtn.addEventListener('click', closePopup);
+  //   if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
+  //   popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
+  // }
+
+/* ---------- Delayed application popup ---------- */
+const popup = document.getElementById('applyPopup');
+
+if (popup) {
+
+  const popupTimes = [15000, 60000, 120000]; // 15s, 60s, 120s
+  const popupTimers = [];
+
+  function showPopup() {
+    popup.classList.add('show');
   }
+
+  function closePopup() {
+    popup.classList.remove('show');
+  }
+
+  popupTimes.forEach((time) => {
+    popupTimers.push(
+      setTimeout(showPopup, time)
+    );
+  });
+
+  const closeBtn = document.getElementById('popupClose');
+  const dismissBtn = document.getElementById('popupDismiss');
+
+  if (closeBtn) closeBtn.addEventListener('click', closePopup);
+  if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
+
+  popup.addEventListener('click', function (e) {
+    if (e.target === popup) closePopup();
+  });
+
+}
 
   /* ---------- Contact form (index page) — no-op guard, real form lives in apply.html ---------- */
   const legacyForm = document.querySelector('#contact form');
