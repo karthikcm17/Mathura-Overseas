@@ -146,21 +146,45 @@ document.addEventListener('DOMContentLoaded', function () {
     update();
   });
 
-  /* ---------- Budget/Country matcher tool (news.html) ---------- */
+  /* ---------- Mobile accordion for country groups (Destinations section) ---------- */
+  document.querySelectorAll('.country-toggle').forEach(function (head) {
+    const wrap = head.nextElementSibling;
+    if (!wrap || !wrap.classList.contains('country-cards-wrap')) return;
+
+    // Fill in the live card count badge
+    const countEl = head.querySelector('.cg-count-num');
+    if (countEl) {
+      const cardCount = wrap.querySelectorAll('.banner-card').length;
+      countEl.textContent = cardCount + (cardCount === 1 ? ' university' : ' universities');
+    }
+
+    function toggle() {
+      const isOpen = wrap.classList.toggle('open');
+      head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* ---------- Budget/Country matcher tool (neet-2026-updates.html) ---------- */
   const matcherBtn = document.getElementById('matcherBtn');
   if (matcherBtn) {
     // Annual budget tier in INR lakhs per university, plus country and page link.
     const UNIVERSITIES = [
-      { name: 'Fergana Medical Institute', country: 'Uzbekistan', budget: 3.2, page: 'Fergana.html', flag: '🇺🇿' },
-      { name: 'Samarkand State Medical University', country: 'Uzbekistan', budget: 3.4, page: 'samarkand.html', flag: '🇺🇿' },
-      { name: 'Tashkent Medical Academy', country: 'Uzbekistan', budget: 3.6, page: 'tashkent.html', flag: '🇺🇿' },
-      { name: 'Lyceum Northwestern University', country: 'Philippines', budget: 2.8, page: 'lyceum.html', flag: '🇵🇭' },
-      { name: 'AMA School of Medicine, Manila', country: 'Philippines', budget: 3.0, page: 'ama-school-of-medicine.html', flag: '🇵🇭' },
+      { name: 'Fergana Medical Institute', country: 'Uzbekistan', budget: 3.2, page: 'mbbs-in-uzbekistan-fergana.html', flag: '🇺🇿' },
+      { name: 'Samarkand State Medical University', country: 'Uzbekistan', budget: 3.4, page: 'mbbs-in-uzbekistan-samarkand.html', flag: '🇺🇿' },
+      { name: 'Tashkent Medical Academy', country: 'Uzbekistan', budget: 3.6, page: 'mbbs-in-uzbekistan-tashkent.html', flag: '🇺🇿' },
+      { name: 'MBBS in Vietnam', country: 'Vietnam', budget: 3.5, page: 'mbbs-in-vietnam.html', flag: '🇻🇳' },
+      { name: 'Lyceum Northwestern University', country: 'Philippines', budget: 2.8, page: 'mbbs-in-philippines-lyceum.html', flag: '🇵🇭' },
+      { name: 'AMA School of Medicine, Manila', country: 'Philippines', budget: 3.0, page: 'mbbs-in-philippines-ama-school-of-medicine.html', flag: '🇵🇭' },
       { name: 'Brokenshire College of Medicine', country: 'Philippines', budget: 3.7, page: 'mbbs-in-philippines-brokenshire.html', flag: '🇵🇭' },
-      { name: 'Southwestern University PHINMA', country: 'Philippines', budget: 3.9, page: 'southwestern.html', flag: '🇵🇭' },
-      { name: 'UV Gullas College of Medicine', country: 'Philippines', budget: 4.1, page: 'uv-gullas.html', flag: '🇵🇭' },
-      { name: 'Davao Medical School Foundation', country: 'Philippines', budget: 4.4, page: 'davao.html', flag: '🇵🇭' },
-      { name: 'Universidade Católica Timorense', country: 'Timor-Leste', budget: 5.4, page: 'uct-timor.html', flag: '🇹🇱' }
+      { name: 'Southwestern University PHINMA', country: 'Philippines', budget: 3.9, page: 'mbbs-in-philippines-southwestern.html', flag: '🇵🇭' },
+      { name: 'UV Gullas College of Medicine', country: 'Philippines', budget: 4.1, page: 'mbbs-in-philippines-uv-gullas.html', flag: '🇵🇭' },
+      { name: 'Davao Medical School Foundation', country: 'Philippines', budget: 4.4, page: 'mbbs-in-philippines-davao.html', flag: '🇵🇭' },
+      { name: 'Universidade Católica Timorense', country: 'Timor-Leste', budget: 5.4, page: 'mbbs-in-timor-uct-timor.html', flag: '🇹🇱' }
     ];
 
     matcherBtn.addEventListener('click', function () {

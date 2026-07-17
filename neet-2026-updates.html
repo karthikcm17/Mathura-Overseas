@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -31,7 +31,7 @@
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="news.html">NEET 2026 Updates</a></li>
+        <li class="nav-item"><a class="nav-link active" href="neet-2026-updates.html">NEET 2026 Updates</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#countries">Destinations</a></li>
         <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
           <a href="apply.html" target="_blank" rel="noopener" class="nav-link nav-cta">Apply Now</a>
@@ -71,53 +71,117 @@
   </div>
 </section>
 
-<!-- BLOG FEED — newest post first. To add tomorrow's post: copy one
-     <div class="blog-post">...</div> block, edit the date/tag/title/text,
-     and paste it directly above the current top post (right after the
-     "NEW POSTS GO HERE" marker below). Nothing else needs to change. -->
-<section class="section-pad uni-cards-section">
+<!-- SPLIT SECTION: matcher tool (left / first-on-mobile) + scrolling news feed (right).
+     To add tomorrow's post: copy one <div class="blog-post">...</div> block in the
+     feed below, edit the date/tag/title/text, and paste it above the current top
+     post. Always use the REAL date of the news, not necessarily today's date. -->
+<section class="section-pad uni-cards-section" id="matcher">
   <div class="container">
     <div class="section-heading reveal">
-      <span class="eyebrow">Daily updates</span>
-      <h2 class="destinations-h2">NEET 2026 &amp; Counselling — Latest First</h2>
-      <p>New post added daily — check back for the latest on results, counselling, and your options.</p>
+      <span class="eyebrow">Stay informed, then decide</span>
+      <h2 class="destinations-h2">Your Options &amp; The Latest News</h2>
+      <p>Check your budget-matched options on one side, and the latest counselling news on the other.</p>
     </div>
 
-    <div class="blog-feed">
+    <div class="row g-5">
+      <!-- Matcher — first in the HTML so it shows first when stacked on mobile -->
+      <div class="col-lg-6">
+        <div class="split-col-label"><i class="bi bi-search"></i><h4>Not Sure About a Government Seat?</h4></div>
+        <p class="text-muted small mb-3">Tell us your budget, and see which of our partner universities abroad genuinely fit — real fees, real options, no waiting for a counselling round to find out.</p>
 
-      <!-- ============ NEW POSTS GO HERE (copy a block below as a template) ============ -->
-
-      <div class="blog-post reveal">
-        <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
-        <div class="blog-post-body">
-          <span class="blog-tag blog-tag-counselling">Counselling</span>
-          <h5><i class="bi bi-calendar-check text-marigold me-2"></i>Counselling Timeline Shifted Too</h5>
-          <p>Because the exam and result were delayed, MCC counselling registration is expected to open around <strong>July 21, 2026</strong> (tentative — MCC has not published an official date yet). The whole cycle is running roughly two months behind a typical year. Check mcc.nic.in directly for the confirmed schedule.</p>
+        <div class="uni-fee-card reveal">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-jade">Your NEET Score (optional)</label>
+              <input type="number" class="form-control" id="matcherScore" placeholder="e.g. 480">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-jade">Annual Budget (INR)</label>
+              <select class="form-select" id="matcherBudget">
+                <option value="99">Under ₹3L / year</option>
+                <option value="4" selected>₹3L – ₹4L / year</option>
+                <option value="5">₹4L – ₹5L / year</option>
+                <option value="999">₹5L+ / year — show me everything</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-jade">Preferred Country</label>
+              <select class="form-select" id="matcherCountry">
+                <option value="Any" selected>Any Country</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Timor-Leste">Timor-Leste</option>
+                <option value="Uzbekistan">Uzbekistan</option>
+                <option value="Vietnam">Vietnam</option>
+              </select>
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+              <button type="button" class="btn btn-marigold w-100" id="matcherBtn"><i class="bi bi-search me-2"></i>Show My Options</button>
+            </div>
+          </div>
         </div>
+        <div id="matcherResults" class="mt-4"></div>
       </div>
 
-      <div class="blog-post reveal">
-        <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
-        <div class="blog-post-body">
-          <span class="blog-tag blog-tag-tips">Tips &amp; Guidance</span>
-          <h5><i class="bi bi-graph-up-arrow text-marigold me-2"></i>Marks vs Rank, Explained</h5>
-          <p>In 2025, 502 marks was worth roughly AIR 50,000. This year, it takes 535 marks to reach that same rank. If you're mentally comparing your 2026 score against a "safe score" you heard about from last year, you're likely working with the wrong number — the gap compounds further down the rank list too.</p>
+      <!-- Scrolling news feed — second in the HTML, appears on the right on desktop -->
+      <div class="col-lg-6">
+        <div class="split-col-label"><i class="bi bi-newspaper"></i><h4>Latest Updates</h4></div>
+        <div class="blog-feed-scroll">
+          <div class="blog-feed">
+
+            <!-- ============ NEW POSTS GO HERE (copy a block below as a template) ============ -->
+
+            <div class="blog-post reveal">
+              <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
+              <div class="blog-post-body">
+                <span class="blog-tag blog-tag-update">Site Update</span>
+                <h5><i class="bi bi-flag-fill text-marigold me-2"></i>Vietnam Now Listed as a Priority Destination</h5>
+                <p>We've added Vietnam to our list of priority destinations — NMC and WHO-recognised universities, around a 4-hour flight from India, and among the most budget-friendly options we offer. Use the matcher on the left to compare it directly against your budget.</p>
+              </div>
+            </div>
+
+            <div class="blog-post reveal">
+              <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
+              <div class="blog-post-body">
+                <span class="blog-tag blog-tag-counselling">Counselling</span>
+                <h5><i class="bi bi-calendar-check text-marigold me-2"></i>Counselling Timeline Shifted Too</h5>
+                <p>Because the exam and result were delayed, MCC counselling registration is expected to open around <strong>July 21, 2026</strong> (tentative — MCC has not published an official date yet). The whole cycle is running roughly two months behind a typical year. Check mcc.nic.in directly for the confirmed schedule.</p>
+              </div>
+            </div>
+
+            <div class="blog-post reveal">
+              <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
+              <div class="blog-post-body">
+                <span class="blog-tag blog-tag-tips">Tips &amp; Guidance</span>
+                <h5><i class="bi bi-graph-up-arrow text-marigold me-2"></i>Marks vs Rank, Explained</h5>
+                <p>In 2025, 502 marks was worth roughly AIR 50,000. This year, it takes 535 marks to reach that same rank. If you're mentally comparing your 2026 score against a "safe score" you heard about from last year, you're likely working with the wrong number — the gap compounds further down the rank list too.</p>
+              </div>
+            </div>
+
+            <div class="blog-post reveal">
+              <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
+              <div class="blog-post-body">
+                <span class="blog-tag blog-tag-news">NEET News</span>
+                <h5><i class="bi bi-exclamation-triangle-fill text-marigold me-2"></i>Why This Year Is Different</h5>
+                <p>The original NEET UG 2026 exam (May 3) was cancelled following paper leak allegations. NTA conducted a fresh Re-NEET on June 21, 2026, with 22+ lakh candidates appearing. A different exam means a different difficulty level and a different score distribution — which is exactly why comparing your marks to last year's cutoffs won't give you an accurate picture this time.</p>
+              </div>
+            </div>
+
+            <div class="blog-post reveal">
+              <div class="blog-post-date"><div class="day">17</div><div class="month">Jun 2026</div></div>
+              <div class="blog-post-body">
+                <span class="blog-tag blog-tag-advisory">Official Advisory</span>
+                <h5><i class="bi bi-patch-check-fill text-marigold me-2"></i>Good News: Philippine MD Degrees Confirmed NMC-Compliant</h5>
+                <p>The Embassy of India in Manila has confirmed that the 54-month MD programme at CHED-recognised Philippine institutions meets India's Foreign Medical Graduate Licentiate requirements — covering the prescribed subjects, English-medium instruction, a 12-month internship, and a Certificate of Registrability. The Philippine House of Representatives separately endorsed the same compliance in March 2026. One nuance: practicing <em>within</em> the Philippines itself still needs the local licensure exam, pending reciprocity confirmation between the two countries — this doesn't affect graduates planning to practice in India or several other countries. Always confirm NMC compliance for your specific university before enrolling. <a href="https://www.eoimanila.gov.in/advisory-on-medical-education-in-the-philippines" target="_blank" rel="noopener">Read the full advisory</a>.</p>
+              </div>
+            </div>
+
+            <!-- ============ END OF POSTS — copy the block above this line ============ -->
+
+          </div>
         </div>
+        <p class="blog-feed-note"><i class="bi bi-info-circle me-1"></i>Scroll for more — posted regularly by the Mathura Overseas team.</p>
       </div>
-
-      <div class="blog-post reveal">
-        <div class="blog-post-date"><div class="day">17</div><div class="month">Jul 2026</div></div>
-        <div class="blog-post-body">
-          <span class="blog-tag blog-tag-news">NEET News</span>
-          <h5><i class="bi bi-exclamation-triangle-fill text-marigold me-2"></i>Why This Year Is Different</h5>
-          <p>The original NEET UG 2026 exam (May 3) was cancelled following paper leak allegations. NTA conducted a fresh Re-NEET on June 21, 2026, with 22+ lakh candidates appearing. A different exam means a different difficulty level and a different score distribution — which is exactly why comparing your marks to last year's cutoffs won't give you an accurate picture this time.</p>
-        </div>
-      </div>
-
-      <!-- ============ END OF POSTS — copy the block above this line ============ -->
-
     </div>
-    <p class="blog-feed-note"><i class="bi bi-info-circle me-1"></i>Posted daily by the Mathura Overseas team.</p>
   </div>
 </section>
 
@@ -157,53 +221,6 @@
   </div>
 </section>
 
-<!-- Budget/Country matcher tool -->
-<section class="section-pad uni-cards-section" id="matcher">
-  <div class="container">
-    <div class="section-heading reveal">
-      <span class="eyebrow">Not leaving it to chance</span>
-      <h2 class="destinations-h2">Not Sure About a Government Seat This Year?</h2>
-      <p>Skip the guesswork on Indian rank predictions. Tell us your budget, and see which of our partner universities abroad genuinely fit — real fees, real options, no waiting for a counselling round to find out.</p>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="uni-fee-card reveal">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-jade">Your NEET Score (optional)</label>
-              <input type="number" class="form-control" id="matcherScore" placeholder="e.g. 480">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-jade">Annual Budget (INR)</label>
-              <select class="form-select" id="matcherBudget">
-                <option value="99">Under ₹3L / year</option>
-                <option value="4" selected>₹3L – ₹4L / year</option>
-                <option value="5">₹4L – ₹5L / year</option>
-                <option value="999">₹5L+ / year — show me everything</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-jade">Preferred Country</label>
-              <select class="form-select" id="matcherCountry">
-                <option value="Any" selected>Any Country</option>
-                <option value="Philippines">Philippines</option>
-                <option value="Timor-Leste">Timor-Leste</option>
-                <option value="Uzbekistan">Uzbekistan</option>
-              </select>
-            </div>
-            <div class="col-md-6 d-flex align-items-end">
-              <button type="button" class="btn btn-marigold w-100" id="matcherBtn"><i class="bi bi-search me-2"></i>Show My Options</button>
-            </div>
-          </div>
-        </div>
-
-        <div id="matcherResults" class="mt-4"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section section-pad">
   <div class="cta-decor" aria-hidden="true">
@@ -229,7 +246,7 @@
         <h6 class="mb-3">Quick Links</h6>
         <ul class="list-unstyled small">
           <li class="mb-2"><a href="index.html">Home</a></li>
-          <li class="mb-2"><a href="news.html">NEET 2026 Updates</a></li>
+          <li class="mb-2"><a href="neet-2026-updates.html">NEET 2026 Updates</a></li>
           <li class="mb-2"><a href="apply.html" target="_blank">Apply Now</a></li>
         </ul>
       </div>
@@ -248,7 +265,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/917871655111?text=Hi%2C%20I%20want%20to%20know%20about%20MBBS%20Abroad%20options%20after%20NEET%202026" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<a href="https://wa.me/919360859919?text=Hi%2C%20I%20want%20to%20know%20about%20MBBS%20Abroad%20options%20after%20NEET%202026" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js?v=1"></script>

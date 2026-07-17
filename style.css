@@ -318,6 +318,72 @@ a{ color: inherit; }
   .blog-post-date{ width:auto; display:flex; align-items:baseline; gap:6px; text-align:left; }
 }
 
+/* ---------- Flag icons (real images — Windows doesn't render flag emoji properly) ---------- */
+.flag-icon-inline{
+  width:22px; height:16px; object-fit:cover; border-radius:3px; display:inline-block;
+  vertical-align:-2px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); margin-right:2px;
+}
+.flag-icon-inline.lg{ width:28px; height:20px; vertical-align:-4px; }
+
+/* ---------- Banner card accent variants + photo flag badge (less repetitive grid) ---------- */
+.banner-card{ border-top: 4px solid var(--jade); }
+.banner-card.accent-ru{ border-top-color: #C0392B; }
+.banner-card.accent-ge{ border-top-color: #6FB8C4; }
+.banner-card.accent-kz{ border-top-color: #10453C; }
+.banner-card.accent-kg{ border-top-color: #D97706; }
+.banner-card.accent-vn{ border-top-color: #16A085; }
+.banner-card.accent-ca{ border-top-color: #6B3FA0; }
+
+.banner-photo-flag{
+  position:absolute; left:14px; bottom:-16px; z-index:2;
+  width:42px; height:30px; border-radius:5px; overflow:hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,.3), 0 0 0 3px #fff;
+}
+.banner-photo-flag img{ width:100%; height:100%; object-fit:cover; display:block; }
+.banner-top{ position:relative; overflow:visible !important; }
+
+/* ---------- Mobile accordion for country groups (reduces scroll fatigue) ---------- */
+@media (max-width: 991.98px){
+  .country-group-head{
+    cursor:pointer; background:#fff; border-radius: var(--radius-md);
+    padding:16px 18px; box-shadow: 0 4px 16px rgba(16,69,60,.08);
+    transition: box-shadow .25s ease; user-select:none;
+  }
+  .country-group-head:hover, .country-group-head:focus-visible{ box-shadow: 0 8px 22px rgba(16,69,60,.15); outline:none; }
+  .cg-count{
+    margin-left:auto; flex-shrink:0; display:flex; align-items:center; gap:6px;
+    font-size:.78rem; font-weight:800; color: var(--jade); background: var(--jade-pale);
+    padding:5px 12px; border-radius:999px;
+  }
+  .cg-chevron{ transition: transform .35s ease; }
+  .country-group-head[aria-expanded="true"] .cg-chevron{ transform: rotate(180deg); }
+  .country-cards-wrap{
+    max-height:0; overflow:hidden; opacity:0;
+    transition: max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease;
+  }
+  .country-cards-wrap.open{
+    max-height: 6000px; opacity:1; padding-top:20px;
+    transition: max-height .6s cubic-bezier(.4,0,.2,1), opacity .5s ease .1s;
+  }
+}
+@media (min-width: 992px){
+  .cg-count{ display:none; }
+  .country-cards-wrap{ max-height:none !important; overflow:visible !important; opacity:1 !important; }
+}
+
+/* ---------- Quick Facts grid + map embed (replaces per-university gallery) ---------- */
+.quick-facts-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+.quick-fact-card{
+  background: var(--jade-pale); border-radius: var(--radius-md); padding: 18px 14px; text-align:center;
+}
+.quick-fact-card i{ font-size:1.5rem; color: var(--jade); margin-bottom:8px; display:block; }
+.quick-fact-card .qf-label{ font-size:.68rem; text-transform:uppercase; letter-spacing:.03em; color: var(--ink-soft); font-weight:700; margin-bottom:3px; }
+.quick-fact-card .qf-value{ font-family: var(--font-display); font-size:1.05rem; font-weight:700; color: var(--jade); line-height:1.2; }
+@media (max-width: 767.98px){ .quick-facts-grid{ grid-template-columns: repeat(2, 1fr); } }
+
+.uni-map-embed{ border-radius: var(--radius-md); overflow:hidden; box-shadow: 0 8px 20px rgba(16,69,60,.1); margin-top:18px; }
+.uni-map-embed iframe{ width:100%; height:260px; border:0; display:block; }
+
 /* ============================================================
    UNIVERSITY DETAIL PAGE
    ============================================================ */
@@ -713,6 +779,19 @@ a{ color: inherit; }
   .social-dock.open .social-dock-handle i{ transform: rotate(0deg); }
   .social-dock-icons a{ width:40px; height:40px; font-size:1.02rem; }
 }
+
+.blog-tag-advisory{ background: rgba(16,69,60,.14); color: var(--jade); border: 1px solid rgba(16,69,60,.25); }
+.blog-tag-update{ background: rgba(139,95,191,.15); color: #5B3A8C; }
+
+.blog-feed-scroll{
+  max-height: 620px; overflow-y: auto; padding-right: 10px; position: relative;
+}
+.blog-feed-scroll::-webkit-scrollbar{ width: 6px; }
+.blog-feed-scroll::-webkit-scrollbar-thumb{ background: var(--jade-pale); border-radius: 10px; }
+.blog-feed-scroll .blog-feed{ max-width: none; margin: 0; }
+.split-col-label{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.split-col-label i{ font-size:1.3rem; color: var(--marigold-dk); }
+.split-col-label h4{ margin:0; color: var(--jade); }
 
 /* ---------- Delayed application popup ---------- */
 .success-check{
