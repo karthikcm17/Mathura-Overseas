@@ -200,13 +200,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const resultsEl = document.getElementById('matcherResults');
       if (matches.length === 0) {
-        resultsEl.innerHTML = '<div class="uni-fee-card text-center"><p class="text-muted mb-0">No exact match at that budget — but our counsellors often find flexible options not listed here. <a href="apply.html" target="_blank" rel="noopener">Talk to us directly</a>.</p></div>';
+        resultsEl.innerHTML = '<div class="matcher-card text-center"><p class="text-muted mb-0">No exact match at that budget — but our counsellors often find flexible options not listed here. <a href="apply.html" target="_blank" rel="noopener">Talk to us directly</a>.</p></div>';
         return;
       }
 
       let html = '<div class="row g-3">';
       matches.forEach(function (u) {
-        html += '<div class="col-md-6"><div class="uni-fee-card h-100" style="padding:20px;">' +
+        html += '<div class="col-md-6"><div class="matcher-card h-100" style="padding:20px;">' +
           '<h6 class="text-jade mb-1">' + u.flag + ' ' + u.name + '</h6>' +
           '<p class="text-muted small mb-2">' + u.country + ' · from ~₹' + u.budget + 'L/year</p>' +
           '<a href="' + u.page + '" class="btn btn-ghost-jade btn-sm w-100">View Details &amp; Fees</a>' +
@@ -214,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       html += '</div>';
       resultsEl.innerHTML = html;
-      resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 
@@ -247,61 +246,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // /* ---------- Delayed application popup (once per browser session) ---------- */
-  // const popup = document.getElementById('applyPopup');
-  // if (popup) {
-  //   const alreadyShown = sessionStorage.getItem('mo_popup_shown');
-  //   let popupTimer = null;
-  //   if (!alreadyShown) {
-  //     popupTimer = setTimeout(function () {
-  //       popup.classList.add('show');
-  //       sessionStorage.setItem('mo_popup_shown', '1');
-  //     }, 15000);
-  //   }
-  //   function closePopup() {
-  //     popup.classList.remove('show');
-  //     if (popupTimer) clearTimeout(popupTimer);
-  //   }
-  //   const closeBtn = document.getElementById('popupClose');
-  //   const dismissBtn = document.getElementById('popupDismiss');
-  //   if (closeBtn) closeBtn.addEventListener('click', closePopup);
-  //   if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
-  //   popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
-  // }
+  /* ---------- Delayed application popup — fires 3 times per page load (15s/60s/120s) ---------- */
+  const popup = document.getElementById('applyPopup');
+  if (popup) {
+    const popupTimes = [20000, 60000, 120000]; // 20s, 60s, 120s
+    const popupTimers = [];
 
-/* ---------- Delayed application popup ---------- */
-const popup = document.getElementById('applyPopup');
+    function showPopup() {
+      popup.classList.add('show');
+    }
 
-if (popup) {
+    function closePopup() {
+      popup.classList.remove('show');
+    }
 
-  const popupTimes = [15000, 60000, 120000]; // 15s, 60s, 120s
-  const popupTimers = [];
+    popupTimes.forEach((time) => {
+      popupTimers.push(
+        setTimeout(showPopup, time)
+      );
+    });
 
-  function showPopup() {
-    popup.classList.add('show');
+    const closeBtn = document.getElementById('popupClose');
+    const dismissBtn = document.getElementById('popupDismiss');
+
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+    if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function (e) {
+      if (e.target === popup) closePopup();
+    });
   }
-
-  function closePopup() {
-    popup.classList.remove('show');
-  }
-
-  popupTimes.forEach((time) => {
-    popupTimers.push(
-      setTimeout(showPopup, time)
-    );
-  });
-
-  const closeBtn = document.getElementById('popupClose');
-  const dismissBtn = document.getElementById('popupDismiss');
-
-  if (closeBtn) closeBtn.addEventListener('click', closePopup);
-  if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
-
-  popup.addEventListener('click', function (e) {
-    if (e.target === popup) closePopup();
-  });
-
-}
 
   /* ---------- Contact form (index page) — no-op guard, real form lives in apply.html ---------- */
   const legacyForm = document.querySelector('#contact form');

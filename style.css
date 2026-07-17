@@ -420,6 +420,14 @@ a{ color: inherit; }
   border: 1px solid rgba(16,69,60,.08); position:sticky; top:100px;
 }
 .uni-fee-table{ width:100%; border-collapse:collapse; }
+
+/* Matcher tool form + results — same visual look as uni-fee-card, but
+   NOT sticky (sticky positioning was causing results to float and
+   overlap the form when both used the same class). */
+.matcher-card{
+  background:#fff; border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(16,69,60,.08); position: static;
+}
 .uni-fee-table td{ padding:10px 0; border-bottom:1px solid rgba(16,69,60,.08); font-size:.92rem; color:var(--ink-soft); }
 .uni-fee-table tr:last-child td{ border-bottom:none; padding-top:14px; font-size:1rem; color:var(--jade); }
 
