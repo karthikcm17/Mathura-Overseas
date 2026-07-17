@@ -286,6 +286,39 @@ a{ color: inherit; }
 .priority-head.has-photo > *{ position:relative; z-index:2; }
 
 /* ============================================================
+   BLOG FEED (news.html) — designed so adding a new day's post
+   is a copy-paste of one card block, newest at the top.
+   ============================================================ */
+.blog-feed{ display:flex; flex-direction:column; gap:20px; max-width: 820px; margin: 0 auto; }
+.blog-post{
+  display:flex; gap:20px; background:#fff; border-radius: var(--radius-lg);
+  padding: 24px 26px; box-shadow: 0 8px 22px rgba(16,69,60,.08);
+  border-left: 4px solid var(--marigold);
+}
+.blog-post-date{
+  flex-shrink:0; width:76px; text-align:center; padding-top:2px;
+}
+.blog-post-date .day{ font-family: var(--font-display); font-size:1.7rem; font-weight:700; color: var(--jade); line-height:1; }
+.blog-post-date .month{ font-size:.72rem; font-weight:700; text-transform:uppercase; color: var(--ink-soft); letter-spacing:.03em; }
+.blog-post-body{ flex:1; min-width:0; }
+.blog-tag{
+  display:inline-block; font-size:.66rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em;
+  padding:3px 11px; border-radius:999px; margin-bottom:8px;
+}
+.blog-tag-news{ background: rgba(242,153,74,.15); color: var(--marigold-dk); }
+.blog-tag-counselling{ background: var(--jade-pale); color: var(--jade); }
+.blog-tag-tips{ background: rgba(111,184,196,.2); color: #1E4E5A; }
+.blog-post h5{ color: var(--jade); margin-bottom:8px; }
+.blog-post p{ color: var(--ink-soft); font-size:.92rem; margin-bottom:0; }
+.blog-feed-note{
+  text-align:center; font-size:.85rem; color: var(--ink-soft); margin-top:8px;
+}
+@media (max-width: 575.98px){
+  .blog-post{ flex-direction:column; gap:10px; padding:20px; }
+  .blog-post-date{ width:auto; display:flex; align-items:baseline; gap:6px; text-align:left; }
+}
+
+/* ============================================================
    UNIVERSITY DETAIL PAGE
    ============================================================ */
 .uni-page-loading{ min-height:100vh; display:flex; align-items:center; justify-content:center; }

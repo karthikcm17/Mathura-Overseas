@@ -146,6 +146,54 @@ document.addEventListener('DOMContentLoaded', function () {
     update();
   });
 
+  /* ---------- Budget/Country matcher tool (news.html) ---------- */
+  const matcherBtn = document.getElementById('matcherBtn');
+  if (matcherBtn) {
+    // Annual budget tier in INR lakhs per university, plus country and page link.
+    const UNIVERSITIES = [
+      { name: 'Fergana Medical Institute', country: 'Uzbekistan', budget: 3.2, page: 'Fergana.html', flag: '🇺🇿' },
+      { name: 'Samarkand State Medical University', country: 'Uzbekistan', budget: 3.4, page: 'samarkand.html', flag: '🇺🇿' },
+      { name: 'Tashkent Medical Academy', country: 'Uzbekistan', budget: 3.6, page: 'tashkent.html', flag: '🇺🇿' },
+      { name: 'Lyceum Northwestern University', country: 'Philippines', budget: 2.8, page: 'lyceum.html', flag: '🇵🇭' },
+      { name: 'AMA School of Medicine, Manila', country: 'Philippines', budget: 3.0, page: 'ama-school-of-medicine.html', flag: '🇵🇭' },
+      { name: 'Brokenshire College of Medicine', country: 'Philippines', budget: 3.7, page: 'mbbs-in-philippines-brokenshire.html', flag: '🇵🇭' },
+      { name: 'Southwestern University PHINMA', country: 'Philippines', budget: 3.9, page: 'southwestern.html', flag: '🇵🇭' },
+      { name: 'UV Gullas College of Medicine', country: 'Philippines', budget: 4.1, page: 'uv-gullas.html', flag: '🇵🇭' },
+      { name: 'Davao Medical School Foundation', country: 'Philippines', budget: 4.4, page: 'davao.html', flag: '🇵🇭' },
+      { name: 'Universidade Católica Timorense', country: 'Timor-Leste', budget: 5.4, page: 'uct-timor.html', flag: '🇹🇱' }
+    ];
+
+    matcherBtn.addEventListener('click', function () {
+      const budgetCeiling = parseFloat(document.getElementById('matcherBudget').value);
+      const country = document.getElementById('matcherCountry').value;
+
+      let matches = UNIVERSITIES.filter(function (u) {
+        const budgetOk = budgetCeiling >= 999 ? true : u.budget <= budgetCeiling;
+        const countryOk = country === 'Any' ? true : u.country === country;
+        return budgetOk && countryOk;
+      });
+      matches.sort(function (a, b) { return a.budget - b.budget; });
+
+      const resultsEl = document.getElementById('matcherResults');
+      if (matches.length === 0) {
+        resultsEl.innerHTML = '<div class="uni-fee-card text-center"><p class="text-muted mb-0">No exact match at that budget — but our counsellors often find flexible options not listed here. <a href="apply.html" target="_blank" rel="noopener">Talk to us directly</a>.</p></div>';
+        return;
+      }
+
+      let html = '<div class="row g-3">';
+      matches.forEach(function (u) {
+        html += '<div class="col-md-6"><div class="uni-fee-card h-100" style="padding:20px;">' +
+          '<h6 class="text-jade mb-1">' + u.flag + ' ' + u.name + '</h6>' +
+          '<p class="text-muted small mb-2">' + u.country + ' · from ~₹' + u.budget + 'L/year</p>' +
+          '<a href="' + u.page + '" class="btn btn-ghost-jade btn-sm w-100">View Details &amp; Fees</a>' +
+          '</div></div>';
+      });
+      html += '</div>';
+      resultsEl.innerHTML = html;
+      resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
   /* ---------- PWA: register service worker (offline support + installability) ---------- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -184,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
       popupTimer = setTimeout(function () {
         popup.classList.add('show');
         sessionStorage.setItem('mo_popup_shown', '1');
-      }, 20000);
+      }, 45000);
     }
     function closePopup() {
       popup.classList.remove('show');
