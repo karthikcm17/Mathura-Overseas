@@ -169,6 +169,73 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* ---------- News list: category filter (All / NEET UG / NEET PG) + pagination ----------
+     Built for high volume (250-300+ posts over time). All posts always stay in
+     the HTML for SEO — this just controls how many are VISIBLE at once, so the
+     page stays fast and scannable no matter how large the list grows. */
+  const newsList = document.getElementById('newsList');
+  if (newsList) {
+    const BATCH_SIZE = 6;
+    const filterTabs = document.querySelectorAll('.feed-filter-tab');
+    const loadMoreBtn = document.getElementById('newsLoadMore');
+    const countLabel = document.getElementById('newsListCount');
+    const allRows = Array.prototype.slice.call(newsList.querySelectorAll('.news-row'));
+    let currentFilter = 'all';
+    let visibleCount = BATCH_SIZE;
+
+    function getFilteredRows() {
+      return allRows.filter(function (row) {
+        return currentFilter === 'all' || row.getAttribute('data-exam') === currentFilter;
+      });
+    }
+
+    function render() {
+      const filtered = getFilteredRows();
+      allRows.forEach(function (row) { row.classList.add('hidden-row'); });
+      filtered.slice(0, visibleCount).forEach(function (row) { row.classList.remove('hidden-row'); });
+
+      const shown = Math.min(visibleCount, filtered.length);
+      countLabel.textContent = 'Showing ' + shown + ' of ' + filtered.length + ' updates';
+      if (shown >= filtered.length) {
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.innerHTML = 'All caught up';
+      } else {
+        loadMoreBtn.disabled = false;
+        loadMoreBtn.innerHTML = 'Load More <i class="bi bi-chevron-down ms-1"></i>';
+      }
+    }
+
+    filterTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        filterTabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        currentFilter = tab.getAttribute('data-filter');
+        visibleCount = BATCH_SIZE;
+        render();
+      });
+    });
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', function () {
+        visibleCount += BATCH_SIZE;
+        render();
+      });
+    }
+
+    render();
+  }
+
+  /* ---------- News item "View More" expand/collapse ---------- */
+  document.querySelectorAll('.news-view-more').forEach(function (btn) {
+    const fullText = btn.previousElementSibling;
+    if (!fullText || !fullText.classList.contains('news-full-text')) return;
+    btn.addEventListener('click', function () {
+      const isOpen = fullText.classList.toggle('expanded');
+      btn.classList.toggle('expanded', isOpen);
+      btn.querySelector('span').textContent = isOpen ? 'View Less' : 'View More';
+    });
+  });
+
   /* ---------- Budget/Country matcher tool (neet-2026-updates.html) ---------- */
   const matcherBtn = document.getElementById('matcherBtn');
   if (matcherBtn) {
@@ -199,14 +266,19 @@ document.addEventListener('DOMContentLoaded', function () {
       matches.sort(function (a, b) { return a.budget - b.budget; });
 
       const resultsEl = document.getElementById('matcherResults');
+      resultsEl.classList.add('show');
+      const closeBtnHtml = '<button type="button" class="mrp-close" id="mrpCloseBtn" aria-label="Close results">&times;</button>';
+
       if (matches.length === 0) {
-        resultsEl.innerHTML = '<div class="matcher-card text-center"><p class="text-muted mb-0">No exact match at that budget — but our counsellors often find flexible options not listed here. <a href="apply.html" target="_blank" rel="noopener">Talk to us directly</a>.</p></div>';
+        resultsEl.innerHTML = closeBtnHtml + '<div class="matcher-card text-center"><p class="text-muted mb-0">No exact match at that budget — but our counsellors often find flexible options not listed here. <a href="apply.html" target="_blank" rel="noopener">Talk to us directly</a>.</p></div>';
+        document.getElementById('mrpCloseBtn').addEventListener('click', function () { resultsEl.classList.remove('show'); });
         return;
       }
 
-      let html = '<div class="row g-3">';
+      let html = closeBtnHtml + '<div class="mrp-head"><i class="bi bi-check-circle-fill text-marigold"></i> ' + matches.length + ' matching ' + (matches.length === 1 ? 'university' : 'universities') + '</div>';
+      html += '<div class="row g-3">';
       matches.forEach(function (u) {
-        html += '<div class="col-md-6"><div class="matcher-card h-100" style="padding:20px;">' +
+        html += '<div class="col-lg-3 col-md-6"><div class="matcher-card h-100" style="padding:20px;">' +
           '<h6 class="text-jade mb-1">' + u.flag + ' ' + u.name + '</h6>' +
           '<p class="text-muted small mb-2">' + u.country + ' · from ~₹' + u.budget + 'L/year</p>' +
           '<a href="' + u.page + '" class="btn btn-ghost-jade btn-sm w-100">View Details &amp; Fees</a>' +
@@ -214,6 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       html += '</div>';
       resultsEl.innerHTML = html;
+      document.getElementById('mrpCloseBtn').addEventListener('click', function () { resultsEl.classList.remove('show'); });
     });
   }
 
@@ -249,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Delayed application popup — fires 3 times per page load (15s/60s/120s) ---------- */
   const popup = document.getElementById('applyPopup');
   if (popup) {
-    const popupTimes = [20000, 60000, 120000]; // 20s, 60s, 120s
+    const popupTimes = [15000, 60000, 120000]; // 15s, 60s, 120s
     const popupTimers = [];
 
     function showPopup() {
