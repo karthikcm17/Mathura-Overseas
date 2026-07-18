@@ -944,10 +944,21 @@ a{ color: inherit; }
 /* ---------- AI Chat widget ---------- */
 .ai-chat-bubble{
   position:fixed; bottom:96px; right:24px; z-index:999;
-  width:58px; height:58px; border-radius:50%; background: var(--jade);
+  width:58px; height:58px; border-radius:50%;
+  background: linear-gradient(135deg, var(--jade) 0%, #1E6F5E 55%, var(--marigold) 150%);
   color:#fff; display:flex; align-items:center; justify-content:center;
-  font-size:1.5rem; box-shadow:0 6px 20px rgba(16,69,60,.35); border:none; cursor:pointer;
+  font-size:1.5rem; box-shadow:0 6px 20px rgba(16,69,60,.4); border:none; cursor:pointer;
   transition: transform .2s ease, opacity .2s ease, visibility 0s linear 0s;
+  animation: aiBubblePulse 3s ease-in-out infinite;
+}
+.ai-chat-bubble i{ animation: aiIconTwinkle 3s ease-in-out infinite; }
+@keyframes aiBubblePulse{
+  0%, 100%{ box-shadow:0 6px 20px rgba(16,69,60,.4), 0 0 0 0 rgba(242,153,74,.5); }
+  50%{ box-shadow:0 6px 20px rgba(16,69,60,.4), 0 0 0 10px rgba(242,153,74,0); }
+}
+@keyframes aiIconTwinkle{
+  0%, 100%{ transform:scale(1) rotate(0deg); opacity:1; }
+  50%{ transform:scale(1.15) rotate(8deg); opacity:.85; }
 }
 .ai-chat-bubble:hover{ transform: scale(1.08); }
 .ai-chat-bubble.hidden{
@@ -956,9 +967,9 @@ a{ color: inherit; }
 }
 .ai-chat-bubble .ai-badge{
   position:absolute; top:-2px; right:-2px; width:16px; height:16px; border-radius:50%;
-  background: var(--marigold); border:2px solid #fff;
+  background: var(--gold); border:2px solid #fff;
 }
-@media (max-width: 575.98px){ .ai-chat-bubble{ bottom:88px; right:16px; width:52px; height:52px; font-size:1.3rem; } }
+@media (max-width: 575.98px){ .ai-chat-bubble{ bottom:112px; right:16px; width:50px; height:50px; font-size:1.2rem; } }
 
 /* Anchored with BOTH top and bottom (not a fixed height) so the browser
    computes the panel's height as whatever fits between them — this makes
@@ -976,7 +987,17 @@ a{ color: inherit; }
   visibility:visible; opacity:1; transform:translateY(0) scale(1); pointer-events:auto;
   transition: opacity .25s ease, transform .25s ease, visibility 0s linear 0s;
 }
-@media (max-width: 575.98px){ .ai-chat-panel{ right:16px; top:88px; bottom:16px; width:calc(100vw - 32px); } }
+/* Mobile: a contained bottom-sheet (not a near-fullscreen floating card) —
+   fixed height capped at 65% of the viewport, full width, slides up from
+   the bottom edge with rounded top corners only. */
+@media (max-width: 575.98px){
+  .ai-chat-panel{
+    left:0; right:0; top:auto; bottom:0; width:100%; max-width:100%;
+    height:min(560px, 65vh); border-radius: 20px 20px 0 0;
+    transform:translateY(100%);
+  }
+  .ai-chat-panel.open{ transform:translateY(0); }
+}
 
 .ai-chat-header{
   background: linear-gradient(120deg, var(--jade), #1E6F5E); color:#fff;
