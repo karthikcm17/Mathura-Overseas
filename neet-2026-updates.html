@@ -504,6 +504,35 @@
     </div>
   </div>
 
+  <!-- AI Chat widget -->
+<button type="button" class="ai-chat-bubble" id="aiChatBubble" aria-label="Chat with AI assistant">
+  <i class="bi bi-stars"></i>
+  <span class="ai-badge"></span>
+</button>
+
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar"><i class="bi bi-robot"></i></div>
+    <div>
+      <p class="ai-title">Ask Mathura Overseas</p>
+      <p class="ai-subtitle">AI assistant &middot; usually replies instantly</p>
+    </div>
+    <button type="button" class="ai-close" id="aiChatClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-msg ai-msg-bot">Hi! I can answer questions about our universities, fees, eligibility, and the application process. What would you like to know?</div>
+  </div>
+  <div class="ai-chat-suggestions" id="aiChatSuggestions">
+    <button type="button" data-q="What's the cheapest MBBS option you offer?">Cheapest option?</button>
+    <button type="button" data-q="What are the eligibility requirements?">Eligibility?</button>
+    <button type="button" data-q="How does the application process work?">How to apply?</button>
+  </div>
+  <form class="ai-chat-input-row" id="aiChatForm">
+    <input type="text" id="aiChatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">
+    <button type="submit" id="aiChatSend"><i class="bi bi-send"></i></button>
+  </form>
+</div>
+
   <a href="https://wa.me/919360859919?text=Hi%2C%20I%20want%20to%20know%20about%20MBBS%20Abroad%20options%20after%20NEET%202026"
     class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 

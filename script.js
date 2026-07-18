@@ -236,6 +236,114 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* ---------- AI Chat widget ---------- */
+  // Paste your deployed Cloudflare Worker URL here once it's live
+  // (see /home/claude/ai-chat-worker/worker.js deployment notes).
+  const AI_CHAT_CONFIG = {
+    WORKER_URL: 'https://mathura-ai-chat.mathuraoverseas.workers.dev/'
+  };
+
+  const aiChatBubble = document.getElementById('aiChatBubble');
+  if (aiChatBubble) {
+    const aiChatPanel = document.getElementById('aiChatPanel');
+    const aiChatClose = document.getElementById('aiChatClose');
+    const aiChatMessages = document.getElementById('aiChatMessages');
+    const aiChatForm = document.getElementById('aiChatForm');
+    const aiChatInput = document.getElementById('aiChatInput');
+    const aiChatSend = document.getElementById('aiChatSend');
+    const aiChatSuggestions = document.getElementById('aiChatSuggestions');
+    const history = [];
+
+    function toggleChat() {
+      aiChatPanel.classList.toggle('open');
+      const isOpen = aiChatPanel.classList.contains('open');
+      aiChatBubble.classList.toggle('hidden', isOpen);
+      if (isOpen) {
+        aiChatInput.focus();
+        // don't let the two overlays show at once
+        const applyPopupEl = document.getElementById('applyPopup');
+        if (applyPopupEl) applyPopupEl.classList.remove('show');
+      }
+    }
+    aiChatBubble.addEventListener('click', toggleChat);
+    aiChatClose.addEventListener('click', toggleChat);
+
+    function addMessage(text, sender) {
+      const div = document.createElement('div');
+      div.className = 'ai-msg ai-msg-' + sender;
+      div.textContent = text;
+      aiChatMessages.appendChild(div);
+      aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+      return div;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'ai-typing';
+      div.id = 'aiTypingIndicator';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      aiChatMessages.appendChild(div);
+      aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+    }
+    function hideTyping() {
+      const el = document.getElementById('aiTypingIndicator');
+      if (el) el.remove();
+    }
+
+    async function sendMessage(text) {
+      if (!text.trim()) return;
+      if (aiChatSuggestions) aiChatSuggestions.style.display = 'none';
+
+      addMessage(text, 'user');
+      history.push({ role: 'user', text: text });
+      aiChatInput.value = '';
+      aiChatSend.disabled = true;
+      showTyping();
+
+      const noEndpointConfigured = AI_CHAT_CONFIG.WORKER_URL.indexOf('PASTE_YOUR') === 0;
+      if (noEndpointConfigured) {
+        hideTyping();
+        addMessage('The AI assistant isn\'t connected yet. In the meantime, please use the Apply Now form or WhatsApp!', 'error');
+        aiChatSend.disabled = false;
+        return;
+      }
+
+      try {
+        const res = await fetch(AI_CHAT_CONFIG.WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, history: history.slice(0, -1) })
+        });
+        const data = await res.json();
+        hideTyping();
+        if (!res.ok) {
+          addMessage(data.error || 'Something went wrong. Please try again.', 'error');
+        } else {
+          addMessage(data.reply, 'bot');
+          history.push({ role: 'assistant', text: data.reply });
+        }
+      } catch (err) {
+        hideTyping();
+        addMessage('Could not reach the assistant — check your connection and try again, or message us on WhatsApp.', 'error');
+      }
+      aiChatSend.disabled = false;
+    }
+
+    aiChatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      sendMessage(aiChatInput.value);
+    });
+
+    if (aiChatSuggestions) {
+      aiChatSuggestions.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          sendMessage(btn.getAttribute('data-q'));
+        });
+      });
+    }
+  }
+
+
   /* ---------- Budget/Country matcher tool (neet-2026-updates.html) ---------- */
   const matcherBtn = document.getElementById('matcherBtn');
   if (matcherBtn) {
@@ -322,10 +430,12 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Delayed application popup — fires 3 times per page load (15s/60s/120s) ---------- */
   const popup = document.getElementById('applyPopup');
   if (popup) {
-    const popupTimes = [15000, 60000, 120000]; // 15s, 60s, 120s
+    const popupTimes = [20000, 60000]; // 25s, 60s
     const popupTimers = [];
 
     function showPopup() {
+      const chatPanelEl = document.getElementById('aiChatPanel');
+      if (chatPanelEl && chatPanelEl.classList.contains('open')) return; // don't interrupt an active chat
       popup.classList.add('show');
     }
 

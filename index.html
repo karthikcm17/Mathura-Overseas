@@ -86,9 +86,9 @@
             across the Philippines, Timor-Leste and Uzbekistan — offering transparent admissions, expert guidance, visa
             assistance, and continuous support until graduation.</p>
           <div class="d-flex flex-wrap gap-3 mt-4">
-            <a href="#countries" class="btn btn-marigold">Explore Destinations <i
+            <a href="#countries" class="btn btn-outline-jade">Explore Destinations <i
                 class="bi bi-arrow-right ms-1"></i></a>
-            <a href="apply.html" target="_blank" rel="noopener" class="btn btn-outline-jade">Book Free Counselling</a>
+            <a href="neet-2026-updates.html" class="btn btn-marigold" target="_blank" rel="noopener" class="btn btn-outline-jade">NEET 2026 Updates</a>
           </div><br>
           <div class="hero-stats">
             <div class="hero-stat">
@@ -216,7 +216,7 @@
             <div class="spotlight-panel p-4">
               <h4 class="mb-2">Why families choose Lyceum</h4>
               <div class="fee-spotlight">
-                <div class="fee-num">₹1.4L</div>
+                <div class="fee-num">₹ 1.4L</div>
                 <div class="fee-note">per semester —<br>one of the lowest MD tuitions in the Philippines</div>
               </div>
               <ul class="list-unstyled">
@@ -286,7 +286,7 @@
               <div class="banner-body">
                 <h6><img src="https://flagcdn.com/w40/ph.png" alt="Philippines" class="flag-icon-inline"> Davao Medical School Foundation</h6>
                 <div class="banner-pills"><span class="banner-pill">6 yrs</span><span
-                    class="banner-pill">~$5,100/yr</span></div>
+                    class="banner-pill">~$ 2750 / sem</span></div>
                 <ul class="banner-list">
                   <li><i class="bi bi-check-circle-fill"></i> Cadaver labs & 3D Anatomage table</li>
                   <li><i class="bi bi-check-circle-fill"></i> Highest FMGE/NExT pass rate among foreign colleges</li>
@@ -307,7 +307,7 @@
               <div class="banner-body">
                 <h6><img src="https://flagcdn.com/w40/ph.png" alt="Philippines" class="flag-icon-inline"> UV Gullas College of Medicine</h6>
                 <div class="banner-pills"><span class="banner-pill">6 yrs</span><span
-                    class="banner-pill">~$4,800/yr</span></div>
+                    class="banner-pill">₱ 1.25L / sem</span></div>
                 <ul class="banner-list">
                   <li><i class="bi bi-check-circle-fill"></i> 1,400+ Indian students on campus</li>
                   <li><i class="bi bi-check-circle-fill"></i> NMC, WHO, ECFMG, FAIMER, USMLE accredited</li>
@@ -328,7 +328,7 @@
               <div class="banner-body">
                 <h6><img src="https://flagcdn.com/w40/ph.png" alt="Philippines" class="flag-icon-inline"> Lyceum Northwestern University</h6>
                 <div class="banner-pills"><span class="banner-pill">6 yrs</span><span class="banner-pill">₹1.4L /
-                    semester</span></div>
+                    sem</span></div>
                 <ul class="banner-list">
                   <li><i class="bi bi-check-circle-fill"></i> Among the most affordable MD tuitions in the country</li>
                   <li><i class="bi bi-check-circle-fill"></i> Anatomage table & simulation labs</li>
@@ -349,7 +349,7 @@
               <div class="banner-body">
                 <h6><img src="https://flagcdn.com/w40/ph.png" alt="Philippines" class="flag-icon-inline"> Southwestern University PHINMA</h6>
                 <div class="banner-pills"><span class="banner-pill">5.5 yrs</span><span
-                    class="banner-pill">~$4,500/yr</span></div>
+                    class="banner-pill">~$ 5000/yr</span></div>
                 <ul class="banner-list">
                   <li><i class="bi bi-check-circle-fill"></i> Own teaching hospital on campus</li>
                   <li><i class="bi bi-check-circle-fill"></i> NMC, WHO, WFME, ECFMG, FAIMER recognised</li>
@@ -375,7 +375,7 @@
 
                 <div class="banner-pills">
                   <span class="banner-pill">6 yrs</span>
-                  <span class="banner-pill">~$3,500/yr</span>
+                  <span class="banner-pill">~$ 5000/yr</span>
                 </div>
 
                 <ul class="banner-list">
@@ -957,6 +957,7 @@
                 class="bi bi-calendar-check me-2"></i>Book Free Counselling</a>
             <a href="tel:+919360859919" class="btn btn-lg cta-btn-outline"><i class="bi bi-telephone me-2"></i>Call
               Now</a>
+              
           </div>
         </div>
         <div class="col-lg-5">
@@ -1113,7 +1114,35 @@
       <button type="button" class="btn btn-link text-muted w-100 mt-2" id="popupDismiss">Maybe later</button>
     </div>
   </div>
+  
+<!-- AI Chat widget -->
+<button type="button" class="ai-chat-bubble" id="aiChatBubble" aria-label="Chat with AI assistant">
+  <i class="bi bi-stars"></i>
+  <span class="ai-badge"></span>
+</button>
 
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar"><i class="bi bi-robot"></i></div>
+    <div>
+      <p class="ai-title">Ask Mathura Overseas</p>
+      <p class="ai-subtitle">AI assistant &middot; usually replies instantly</p>
+    </div>
+    <button type="button" class="ai-close" id="aiChatClose" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages">
+    <div class="ai-msg ai-msg-bot">Hi! I can answer questions about our universities, fees, eligibility, and the application process. What would you like to know?</div>
+  </div>
+  <div class="ai-chat-suggestions" id="aiChatSuggestions">
+    <button type="button" data-q="What's the cheapest MBBS option you offer?">Cheapest option?</button>
+    <button type="button" data-q="What are the eligibility requirements?">Eligibility?</button>
+    <button type="button" data-q="How does the application process work?">How to apply?</button>
+  </div>
+  <form class="ai-chat-input-row" id="aiChatForm">
+    <input type="text" id="aiChatInput" placeholder="Type your question..." autocomplete="off" maxlength="500">
+    <button type="submit" id="aiChatSend"><i class="bi bi-send"></i></button>
+  </form>
+</div>
   <a href="https://wa.me/919360859919?text=Hi%2C%20I%20want%20to%20know%20about%20MBBS%20Abroad%20via%20Mathura%20Overseas"
     class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
 
