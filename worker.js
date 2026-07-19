@@ -26,7 +26,7 @@
 const ALLOWED_ORIGINS = [
   'https://mathuraoverseas.com',
   'https://www.mathuraoverseas.com',
-  'https://mathuraoverseas.netlify.app',
+  'https://karthikcm17.github.io/Mathura-Overseas/',
   'http://127.0.0.1:5500',
   'http://localhost:5500'
 ];
