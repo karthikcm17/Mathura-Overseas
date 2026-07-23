@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Delayed application popup — fires 3 times per page load (15s/60s/120s) ---------- */
   const popup = document.getElementById('applyPopup');
   if (popup) {
-    const popupTimes = [20000, 60000]; // 25s, 60s
+    const popupTimes = [20000, 60000]; // 20s, 60s
     const popupTimers = [];
 
     function showPopup() {

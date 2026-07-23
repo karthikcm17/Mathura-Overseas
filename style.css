@@ -2,7 +2,6 @@
    MATHURA OVERSEAS — "Monsoon Bloom" design system
    Jade / Marigold / Blush — a warm, credential-forward palette
    ============================================================ */
-
 :root{
   --jade:        #10453C;
   --jade-light:  #1B6355;
@@ -126,15 +125,29 @@ a{ color: inherit; }
   animation: brandWelcome 1.4s ease-out 1;
   transition: transform .35s ease, box-shadow .35s ease;
 }
-.brand-mark i{ color: var(--jade); font-size:1.05rem; transition: transform .45s ease; }
+.brand-mark i{ color: var(--jade); font-size:1.05rem; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
 .navbar-brand:hover .brand-mark{ transform: scale(1.08); box-shadow: 0 8px 20px rgba(242,153,74,.4); }
-.navbar-brand:hover .brand-mark i{ transform: rotate(22deg); }
+.navbar-brand:hover .brand-mark i{ transform: translateY(-4px) rotate(-12deg); }
+
 @keyframes brandWelcome{
   0%{ box-shadow: 0 0 0 0 rgba(242,153,74,.55); }
   100%{ box-shadow: 0 0 0 16px rgba(242,153,74,0); }
 }
 .brand-mark-sm{ width:32px; height:32px; }
 .brand-mark-sm i{ font-size:.9rem; }
+
+.footer-brand .brand-mark-sm{
+  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.06));
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow: 0 4px 14px rgba(0,0,0,.25), inset 0 1px 1px rgba(255,255,255,.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.footer-brand .brand-mark-sm i{ color: var(--marigold); }
+.footer-brand:hover .brand-mark-sm{
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,.3), inset 0 1px 1px rgba(255,255,255,.5);
+}
 
 .brand-text{ letter-spacing:.01em; }
 .brand-accent{ color: var(--marigold); font-weight:600; }
@@ -946,9 +959,9 @@ a{ color: inherit; }
 .ai-chat-bubble{
   position:fixed; bottom:96px; right:24px; z-index:999;
   width:58px; height:58px; border-radius:50%;
-  background: linear-gradient(135deg, var(--jade) 0%, #1E6F5E 55%, var(--marigold) 150%);
-  color:#fff; display:flex; align-items:center; justify-content:center;
-  font-size:1.5rem; box-shadow:0 6px 20px rgba(16,69,60,.4); border:none; cursor:pointer;
+  background: linear-gradient(135deg, var(--marigold) 0%, var(--gold) 100%);
+  color: var(--jade); display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; box-shadow:0 6px 20px rgba(217,119,6,.4); border:none; cursor:pointer;
   transition: transform .2s ease, opacity .2s ease, visibility 0s linear 0s;
   animation: aiBubblePulse 3s ease-in-out infinite;
 }
@@ -1096,10 +1109,14 @@ a{ color: inherit; }
   display:flex; align-items:center; gap:10px; background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.16); border-radius: 10px; padding: 8px 14px;
   color:#fff; text-decoration:none; font-size:.72rem; line-height:1.3; transition: all .25s ease;
+  width:fit-content;
+
 }
 .store-badge:hover{ background: rgba(255,255,255,.16); color:#fff; }
 .store-badge i{ font-size:1.5rem; color: var(--gold); flex-shrink:0; }
 .store-badge strong{ font-size:.88rem; }
+
+
 
 /* ---------- Footer ---------- */
 footer{ background: var(--ink); }
