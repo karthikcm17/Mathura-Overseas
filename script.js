@@ -460,6 +460,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Mobile nav blur backdrop ---------- */
+  const navCollapseEl = document.getElementById('navbarMain');
+  if (navCollapseEl && typeof bootstrap !== 'undefined') {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+
+    navCollapseEl.addEventListener('show.bs.collapse', function () {
+      document.body.classList.add('mobile-nav-open');
+    });
+    navCollapseEl.addEventListener('hide.bs.collapse', function () {
+      document.body.classList.remove('mobile-nav-open');
+    });
+    backdrop.addEventListener('click', function () {
+      bootstrap.Collapse.getOrCreateInstance(navCollapseEl).hide();
+    });
+  }
+
+  
   /* ---------- Contact form (index page) — no-op guard, real form lives in apply.html ---------- */
   const legacyForm = document.querySelector('#contact form');
   if (legacyForm) {
@@ -469,3 +488,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+/* ---------- Desktop: open dropdown on hover, not just click ---------- */
+if (window.matchMedia('(min-width:992px)').matches) {
+  document.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
+    const toggle = item.querySelector('.dropdown-toggle');
+    let closeTimer;
+    item.addEventListener('mouseenter', function () {
+      clearTimeout(closeTimer);
+      bootstrap.Dropdown.getOrCreateInstance(toggle).show();
+    });
+    item.addEventListener('mouseleave', function () {
+      closeTimer = setTimeout(function () {
+        bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+      }, 150);
+    });
+  });
+}
