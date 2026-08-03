@@ -1,0 +1,98 @@
+/* ============================================================
+   HANDBOOK BOOK READER — standalone paginated page viewer
+   Only used by student-guide.html — safe to link independently,
+   does not need to be merged into your main style.css.
+   ============================================================ */
+.book-shell{ background:var(--jade-pale); padding:130px 0 40px; min-height:100vh; }
+.book-frame{
+  max-width:900px; margin:0 auto; background:#fff; border-radius:var(--radius-lg);
+  box-shadow:0 30px 70px rgba(16,69,60,.2); overflow:hidden;
+}
+.book-progress{ height:5px; background:var(--jade-pale); }
+.book-progress-bar{ height:100%; background:linear-gradient(90deg,var(--marigold),var(--gold)); transition:width .35s ease; }
+
+.book-pages{ position:relative; min-height:640px; }
+.book-page{
+  display:none; padding:48px 52px; opacity:0; transform:translateX(24px);
+  transition:opacity .35s ease, transform .35s ease;
+}
+.book-page.active{ display:block; opacity:1; transform:translateX(0); }
+
+.book-chapter-head{
+  background:linear-gradient(135deg,#0D362F 0%,#1B6355 100%); color:#fff;
+  border-radius:var(--radius-md); padding:26px 30px; margin-bottom:26px; position:relative; overflow:hidden;
+}
+.book-chapter-head .ch-num{
+  position:absolute; right:20px; top:50%; transform:translateY(-50%);
+  font-family:var(--font-display); font-size:4rem; font-weight:700; opacity:.18; line-height:1;
+}
+.book-chapter-head .ch-label{ font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.book-chapter-head h2{ color:#fff; font-size:1.6rem; margin:6px 0 8px; }
+.book-chapter-head p{ color:rgba(255,255,255,.85); font-style:italic; font-size:.9rem; margin:0; max-width:80%; }
+
+.book-page h3{ color:var(--jade); font-size:1.15rem; margin:22px 0 12px; display:flex; align-items:center; gap:8px; }
+.book-page h3::before{ content:''; width:8px; height:8px; border-radius:50%; background:var(--marigold); }
+.book-page p{ font-size:.92rem; color:var(--ink-soft); line-height:1.65; }
+
+.book-table{ width:100%; border-collapse:collapse; font-size:.84rem; margin:8px 0 16px; }
+.book-table th{ background:var(--jade); color:#fff; text-align:left; padding:9px 12px; font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; }
+.book-table td{ padding:8px 12px; border-bottom:1px solid rgba(16,69,60,.08); color:var(--ink-soft); }
+.book-table tr:nth-child(even) td{ background:var(--blush); }
+
+.book-checklist{ list-style:none; padding:0; columns:2; column-gap:24px; }
+.book-checklist li{ display:flex; gap:8px; font-size:.85rem; color:var(--ink-soft); padding:5px 0; break-inside:avoid; }
+.book-checklist li i{ color:var(--marigold-dk); margin-top:2px; }
+@media (max-width:575.98px){ .book-checklist{ columns:1; } }
+
+.book-stat-row{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0; }
+.book-stat{ background:var(--jade-pale); border-radius:var(--radius-sm); padding:12px 16px; flex:1; min-width:110px; text-align:center; }
+.book-stat .n{ font-family:var(--font-display); font-size:1.4rem; font-weight:700; color:var(--jade); }
+.book-stat .l{ font-size:.62rem; text-transform:uppercase; color:var(--ink-soft); font-weight:700; letter-spacing:.02em; }
+
+.book-callout{ border-radius:var(--radius-sm); padding:14px 16px; font-size:.85rem; display:flex; gap:10px; margin:14px 0; }
+.book-callout.info{ background:rgba(111,184,196,.15); color:#1E4E5A; }
+.book-callout.warn{ background:#fde8e8; color:#a33; }
+.book-callout.good{ background:var(--jade-pale); color:var(--jade); }
+.book-callout i{ margin-top:2px; flex-shrink:0; }
+
+.book-cover{ text-align:center; padding:60px 30px; }
+.book-cover .edition{ color:var(--marigold-dk); font-weight:700; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+.book-cover h1{ font-size:clamp(1.8rem,4vw,2.6rem); color:var(--jade); margin:14px 0; }
+.book-cover h1 em{ font-style:normal; color:var(--marigold); }
+.book-toc{ list-style:none; padding:0; text-align:left; max-width:520px; margin:0 auto; }
+.book-toc li{ display:flex; gap:14px; padding:10px 0; border-bottom:1px dashed rgba(16,69,60,.12); align-items:baseline; }
+.book-toc .toc-num{ font-family:var(--font-display); color:var(--marigold-dk); font-weight:700; width:26px; flex-shrink:0; }
+.book-toc .toc-title{ color:var(--jade); font-weight:700; font-size:.92rem; }
+.book-toc .toc-desc{ color:var(--ink-soft); font-size:.78rem; display:block; }
+
+.book-nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 30px; background:var(--blush); border-top:1px solid rgba(16,69,60,.08); }
+.book-nav-btn{
+  background:var(--jade); color:#fff; border:none; border-radius:999px; padding:10px 22px;
+  font-weight:700; font-size:.85rem; display:flex; align-items:center; gap:8px; transition:all .2s ease;
+}
+.book-nav-btn:hover{ background:var(--marigold-dk); }
+.book-nav-btn:disabled{ opacity:.35; pointer-events:none; }
+.book-page-count{ font-size:.8rem; color:var(--ink-soft); font-weight:600; }
+@media (max-width:575.98px){
+  .book-page{ padding:28px 20px; }
+  .book-nav{ padding:14px 16px; }
+  .book-nav-btn span{ display:none; }
+}
+
+/* ---------- Download-gated modal ---------- */
+.handbook-download-bar{
+  max-width:900px; margin:20px auto 0; display:flex; align-items:center; justify-content:space-between;
+  background:#fff; border-radius:var(--radius-md); padding:16px 24px; box-shadow:var(--shadow-soft); flex-wrap:wrap; gap:12px;
+}
+.dl-modal-overlay{
+  position:fixed; inset:0; z-index:600; display:flex; align-items:center; justify-content:center;
+  background:rgba(13,54,47,.6); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .3s ease;
+}
+.dl-modal-overlay.show{ opacity:1; pointer-events:auto; }
+.dl-modal-card{
+  background:#fff; border-radius:var(--radius-lg); padding:34px 30px; max-width:420px; width:90%;
+  transform:translateY(16px) scale(.98); transition:transform .35s ease;
+}
+.dl-modal-overlay.show .dl-modal-card{ transform:translateY(0) scale(1); }
+.dl-modal-card .form-label{ font-weight:600; font-size:.85rem; color:var(--ink); }
+.dl-modal-close{ float:right; background:none; border:none; font-size:1.5rem; color:var(--ink-soft); cursor:pointer; }
