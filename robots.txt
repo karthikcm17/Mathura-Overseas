@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /privacy-policy.html
+
+Sitemap: https://mathuraoverseas.com/sitemap.xml
