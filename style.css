@@ -1202,3 +1202,10 @@ body.mobile-nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
   .dropdown-item:hover, .dropdown-item:focus{ background:rgba(255,255,255,.1); color:#fff; }
   .dropdown-divider{ border-color:rgba(255,255,255,.15); }
 }
+
+.nav-link:focus, .nav-link:focus-visible,
+.dropdown-toggle:focus, .dropdown-toggle:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(242,153,74,.5);
+  border-radius: 6px;
+}
