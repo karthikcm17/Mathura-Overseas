@@ -1209,3 +1209,46 @@ body.mobile-nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
   box-shadow: 0 0 0 2px rgba(242,153,74,.5);
   border-radius: 6px;
 }
+
+/* Neet update page hero stamp styles */
+.hero-announce{
+  display:inline-flex; align-items:center; gap:10px; background:linear-gradient(120deg, var(--gold), var(--marigold));
+  border:none; border-radius:999px; padding:9px 18px 9px 10px; margin-left:12px;
+  box-shadow:0 6px 18px rgba(232,184,75,.4); cursor:pointer; transition:all .25s ease;
+}
+.hero-announce:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(232,184,75,.5); }
+.hero-announce-icon{ width:26px; height:26px; border-radius:50%; background:#fff; color:var(--jade); display:flex; align-items:center; justify-content:center; font-size:.85rem; flex-shrink:0; }
+.hero-announce-text{ font-size:.78rem; font-weight:800; color:#221204; white-space:nowrap; }
+.hero-announce-arrow{ color:#221204; font-size:.85rem; }
+@media (max-width:767.98px){
+  .hero-announce{ display:inline-flex; margin:14px 0 0; padding:8px 14px 8px 8px; gap:8px; }
+  .hero-announce-text{ font-size:.72rem; white-space:nowrap; }
+  .hero-announce-arrow{ display:none; }
+}
+
+/* NEET Update page Mark and rank card styles */
+
+.shift-card{
+  max-width:720px; margin:0 auto; background:#fff; border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-soft); display:flex; align-items:center;
+  padding:30px 20px; gap:10px;
+}
+
+.shift-side{ flex:1; text-align:center; padding:10px; }
+.shift-year{ font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); }
+.shift-year-gold{ color:var(--marigold-dk); }
+.shift-marks{ font-family:var(--font-display); font-size:2.6rem; font-weight:700; color:var(--jade); line-height:1.1; margin:6px 0 2px; }
+.shift-marks-gold{ color:var(--marigold-dk); }
+.shift-label{ font-size:.8rem; color:var(--ink-soft); }
+.shift-side-highlight{ background:var(--blush-deep); border-radius:var(--radius-md); }
+.shift-delta{
+  flex-shrink:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:var(--gold); padding:0 8px;
+}
+.shift-delta-num{ font-family:var(--font-display); font-size:1.3rem; font-weight:700; }
+.shift-delta-label{ font-size:.62rem; text-transform:uppercase; color:var(--ink-soft); font-weight:700; }
+.shift-delta i{ font-size:1.2rem; margin-top:4px; color:var(--marigold); }
+@media (max-width:575.98px){
+  .shift-card{ flex-direction:column; }
+  .shift-delta{ transform:rotate(90deg); padding:6px 0; }
+}

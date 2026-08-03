@@ -6,21 +6,27 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Smooth-scroll for on-page anchors ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId.length < 2) return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        const collapse = document.getElementById('navbarMain');
-        if (collapse && collapse.classList.contains('show')) {
-          bootstrap.Collapse.getOrCreateInstance(collapse).hide();
-        }
+document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    if (targetId.length < 2) return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      // if the target is paginated out of view in the news list, reveal it first
+      if (target.classList.contains('hidden-row')) {
+        target.classList.remove('hidden-row');
+        const loadMoreBtn = document.getElementById('newsLoadMore');
+        if (loadMoreBtn) { loadMoreBtn.innerHTML = 'Load More <i class="bi bi-chevron-down ms-1"></i>'; loadMoreBtn.disabled = false; }
       }
-    });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const collapse = document.getElementById('navbarMain');
+      if (collapse && collapse.classList.contains('show')) {
+        bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+      }
+    }
   });
+});
 
   /* ---------- Navbar shrink + active link on scroll ---------- */
   const nav = document.getElementById('mainNav');
@@ -505,3 +511,18 @@ if (window.matchMedia('(min-width:992px)').matches) {
     });
   });
 }
+
+// Philippines modal open/close
+document.addEventListener('click', function (e) {
+  if (e.target.closest('#openPhilippinesModal')) {
+    const modal = document.getElementById('phAdvisoryPopup');
+    if (modal) modal.classList.add('show');
+  }
+  if (e.target.closest('#phAdvisoryClose')) {
+    const modal = document.getElementById('phAdvisoryPopup');
+    if (modal) modal.classList.remove('show');
+  }
+  if (e.target.id === 'phAdvisoryPopup') {
+    e.target.classList.remove('show');
+  }
+});
