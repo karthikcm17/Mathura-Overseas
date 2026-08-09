@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Does MBBS Abroad Really Cost? | Mathura Overseas</title>
+<meta name="description" content="Tuition is only part of the number. See the complete, real cost breakdown for MBBS abroad — tuition, accommodation, food, travel, and everything else.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+  html{ overflow-x:hidden; }
+  body{ background: var(--blush); overflow-x:hidden; max-width:100vw; }
+  *{ box-sizing:border-box; }
+
+  .lp-header{ background: var(--jade); padding: 12px 0; position:sticky; top:0; z-index:100; box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+  .lp-header .container{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .lp-logo{ display:flex; align-items:center; gap:8px; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1.05rem; text-decoration:none; min-width:0; }
+  .lp-logo:hover{ color:#fff; opacity:.85; }
+  .lp-logo .mark{ width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--marigold),var(--gold)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .lp-logo .mark i{ color:var(--jade); font-size:.8rem; }
+  .lp-logo .lp-logo-text{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .lp-header-call{ color:#fff; font-weight:700; font-size:.8rem; text-decoration:none; display:flex; align-items:center; gap:5px; flex-shrink:0; white-space:nowrap; }
+  @media (max-width:420px){
+    .lp-logo-text{ display:none; }
+    .lp-header-call span{ display:none; }
+    .lp-header-call{ font-size:1.1rem; }
+  }
+
+  .lp-hero-band{
+    background: linear-gradient(150deg,#0D362F 0%,#10453C 60%,#14544A 100%); color:#fff;
+    padding:36px 0 32px; position:relative; overflow:hidden; text-align:center;
+  }
+  .lp-hero-band::after{ content:''; position:absolute; inset:0; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 2px, transparent 2px 90px); }
+  .lp-hero-band .container{ position:relative; z-index:2; }
+  .lp-hero-band h1{ font-size:clamp(1.4rem,5.5vw,2.7rem); margin:14px 0 10px; line-height:1.25; color:#fff; }
+  .lp-hero-band h1 em{ font-style:normal; color:var(--gold); }
+  .lp-hero-band p{ color:rgba(255,255,255,.82); max-width:600px; margin:0 auto; font-size:.92rem; }
+
+  /* No overlap trick — the card sits in normal document flow right after
+     the hero. This is what actually makes it robust across every screen
+     size, since it never depends on guessing the hero's exact height. */
+  .cost-card-wrap{ max-width:900px; margin:0 auto; padding:24px 14px 0; }
+  .cost-card-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:0; background:#fff; border-radius:var(--radius-lg); box-shadow:0 20px 50px rgba(16,69,60,.2); overflow:hidden; }
+  @media (max-width:850px){ .cost-card-grid{ grid-template-columns:1fr; } }
+
+  .cost-card-visual{ background-size:cover; background-position:center; position:relative; min-height:100%; }
+  .cost-card-visual::before{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(13,54,47,.2), rgba(13,54,47,.85)); }
+  .cost-card-visual-inner{ position:relative; z-index:2; padding:18px 20px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; color:#fff; }
+  .cost-card-visual-inner .badge-txt{ font-size:.64rem; text-transform:uppercase; letter-spacing:.05em; font-weight:800; color:var(--gold); margin-bottom:4px; }
+  .cost-card-visual-inner h5{ color:#fff; font-size:1rem; margin:0; }
+  @media (max-width:850px){ .cost-card-visual{ min-height:110px; } }
+
+  .cost-card-body{ padding:22px 18px; }
+  .cost-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:11px 0; border-bottom:1px solid rgba(16,69,60,.08); font-size:.86rem; opacity:0; transform:translateX(-8px); animation:costRowIn .4s ease forwards; }
+  .cost-row:nth-child(1){ animation-delay:.05s; } .cost-row:nth-child(2){ animation-delay:.15s; }
+  .cost-row:nth-child(3){ animation-delay:.25s; } .cost-row:nth-child(4){ animation-delay:.35s; }
+  .cost-row:nth-child(5){ animation-delay:.45s; } .cost-row:nth-child(6){ animation-delay:.55s; }
+  @keyframes costRowIn{ to{ opacity:1; transform:translateX(0); } }
+  .cost-row .lbl{ color:var(--ink-soft); display:flex; align-items:flex-start; gap:7px; min-width:0; flex:1; }
+  .cost-row .lbl i{ color:var(--marigold-dk); font-size:.8rem; width:16px; flex-shrink:0; margin-top:2px; }
+  .cost-row .val{ font-weight:700; color:var(--jade); white-space:nowrap; flex-shrink:0; }
+  .cost-row .val.blur{ color:var(--marigold-dk); font-family:var(--font-display); font-size:1.05rem; animation:blurPulse 1.8s ease-in-out infinite; }
+  @keyframes blurPulse{ 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+  .cost-row.total{ border-bottom:none; margin-top:6px; padding-top:14px; border-top:2px dashed var(--marigold); align-items:center; }
+  .cost-row.total .lbl{ color:var(--jade); font-weight:800; font-size:.92rem; }
+  .cost-row.total .val{ font-family:var(--font-display); font-size:1.5rem; }
+  @media (max-width:360px){
+    .cost-row{ font-size:.8rem; }
+    .cost-row.total .val{ font-size:1.3rem; }
+  }
+
+  .cost-bubbles{ display:flex; flex-direction:column; gap:8px; margin:16px 0; }
+  .cost-bubble{ background:var(--jade-pale); border-radius:12px; padding:10px 12px; font-size:.78rem; color:var(--jade); font-style:italic; display:flex; gap:7px; align-items:flex-start; }
+  .cost-bubble i{ color:var(--marigold-dk); margin-top:1px; flex-shrink:0; }
+
+  .lp-cta-btn{
+    display:block; width:100%; background:linear-gradient(120deg,var(--marigold),var(--gold)); color:#221204; border:none;
+    border-radius:999px; padding:14px 10px; font-weight:800; font-size:.85rem; text-transform:uppercase; letter-spacing:.01em;
+    box-shadow:0 10px 26px rgba(242,153,74,.4); transition:all .2s ease; white-space:normal; line-height:1.3;
+  }
+  .lp-cta-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(242,153,74,.5); }
+
+  .lp-form-panel{ display:none; }
+  .lp-form-panel.show{ display:block; animation:costRowIn .35s ease; }
+  .lp-reveal-panel{ display:none; }
+  .lp-reveal-panel.show{ display:block; animation:costRowIn .4s ease; }
+  .lp-reveal-panel .cost-row{ animation:none; opacity:1; transform:none; }
+
+  .lp-section{ max-width:900px; margin:0 auto; padding:44px 14px 20px; }
+  .lp-trust-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+  .lp-trust-pill{ background:#fff; border:1px solid rgba(16,69,60,.1); border-radius:999px; padding:8px 15px; font-size:.72rem; font-weight:700; color:var(--jade); display:flex; align-items:center; gap:5px; box-shadow:0 3px 10px rgba(16,69,60,.06); white-space:nowrap; }
+  .lp-trust-pill i{ color:var(--marigold-dk); }
+
+  .lp-testimonial{ max-width:560px; margin:26px auto 0; background:#fff; border-left:4px solid var(--marigold); border-radius:var(--radius-md); padding:18px; box-shadow:var(--shadow-soft); }
+  .lp-testimonial p{ font-style:italic; color:var(--ink-soft); font-size:.86rem; margin-bottom:10px; }
+
+  .lp-download-btn{ background:var(--jade); color:#fff; border:none; border-radius:999px; padding:12px 14px; font-weight:700; font-size:.82rem; width:100%; transition:all .2s ease; line-height:1.3; }
+  .lp-download-btn:hover{ background:var(--marigold-dk); }
+  .lp-download-btn:disabled{ opacity:.6; }
+
+  .lp-contact-row{ display:flex; gap:8px; flex-wrap:wrap; }
+  .lp-contact-row > *{ flex:1 1 130px; font-size:.8rem !important; padding:10px 8px !important; white-space:nowrap; }
+
+  .lp-footer{ text-align:center; padding:40px 20px 30px; color:var(--ink-soft); font-size:.75rem; }
+  .lp-footer a{ color:var(--jade); font-weight:600; }
+</style>
+</head>
+<body>
+
+<header class="lp-header">
+  <div class="container">
+    <a href="index.html" class="lp-logo"><span class="mark"><i class="bi bi-mortarboard-fill"></i></span> <span class="lp-logo-text">Mathura Overseas</span></a>
+    <a href="tel:+919360859919" class="lp-header-call"><i class="bi bi-telephone-fill"></i> <span>+91 93608 59919</span></a>
+  </div>
+</header>
+
+<section class="lp-hero-band">
+  <div class="container">
+    <span class="hero-badge"><i class="bi bi-calculator-fill"></i> Real Cost Breakdown</span>
+    <h1>The <em>&#8377;1.5L Tuition</em> Is Only Part of the Story</h1>
+    <p>Every consultancy shows you the tuition fee. Almost none show you what you'll <em>actually</em> spend once accommodation, food, travel, and everything else is added in.</p>
+  </div>
+</section>
+
+<div class="cost-card-wrap">
+  <div class="cost-card-grid">
+    <div class="cost-card-visual" style="background-image:url('https://i.pinimg.com/1200x/8b/90/f7/8b90f7b920dd9c33f53fbf7d96014205.jpg');">
+      <div class="cost-card-visual-inner">
+        <span class="badge-txt">Brokenshire College of Medicine</span>
+        <h5>Davao City, Philippines</h5>
+      </div>
+    </div>
+
+    <div class="cost-card-body">
+      <div id="teaserTable">
+        <div class="cost-row"><span class="lbl"><i class="bi bi-mortarboard-fill"></i>Tuition</span><span class="val">&#8377;1,50,000</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-house-fill"></i>Accommodation</span><span class="val blur">&#8377; ?</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-cup-hot-fill"></i>Food &amp; Living</span><span class="val blur">&#8377; ?</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-airplane-fill"></i>Travel</span><span class="val blur">&#8377; ?</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-three-dots"></i>Other Expenses</span><span class="val blur">&#8377; ?</span></div>
+        <div class="cost-row total"><span class="lbl">TOTAL</span><span class="val">&#8377; ?????</span></div>
+      </div>
+
+      <div class="cost-bubbles">
+        <div class="cost-bubble"><i class="bi bi-chat-quote-fill"></i> Is &#8377;1.5L really what you'll spend?</div>
+        <div class="cost-bubble"><i class="bi bi-chat-quote-fill"></i> What does the number look like after EVERYTHING is added?</div>
+      </div>
+
+      <button type="button" class="lp-cta-btn" id="revealFormBtn">Get the Complete Breakdown &rarr;</button>
+
+      <div class="lp-form-panel" id="lpFormPanel">
+        <h6 class="text-jade mt-3 mb-1">Almost there</h6>
+        <p class="text-muted small mb-2">Enter your details and we'll show your complete breakdown immediately.</p>
+        <form id="lpForm">
+          <div class="mb-2">
+            <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+          </div>
+          <div class="mb-2">
+            <input type="tel" class="form-control" name="mobile" placeholder="Mobile Number" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" name="city" placeholder="City" required>
+          </div>
+          <input type="hidden" name="formType" value="landing_cost_breakdown">
+          <input type="hidden" name="utmSource" id="lpUtmSource">
+          <input type="hidden" name="utmCampaign" id="lpUtmCampaign">
+          <input type="hidden" name="submittedAt" id="lpSubmittedAt">
+          <button type="submit" class="btn btn-marigold w-100" id="lpSubmitBtn">Show My Breakdown</button>
+        </form>
+      </div>
+
+      <div class="lp-reveal-panel" id="lpRevealPanel">
+        <div class="cost-row"><span class="lbl"><i class="bi bi-mortarboard-fill"></i>Tuition (per year)</span><span class="val">&#8377;3,00,000</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-house-fill"></i>Accommodation (est.)</span><span class="val">&#8377;96,000</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-cup-hot-fill"></i>Food &amp; Living (est.)</span><span class="val">&#8377;1,20,000</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-airplane-fill"></i>Travel (est.)</span><span class="val">&#8377;60,000</span></div>
+        <div class="cost-row"><span class="lbl"><i class="bi bi-three-dots"></i>Other (est.)</span><span class="val">&#8377;40,000</span></div>
+        <div class="cost-row total"><span class="lbl">TOTAL / YEAR</span><span class="val">&#8377;6,16,000</span></div>
+        <p class="text-muted small mt-2 mb-3" style="font-style:italic;">Illustrative estimate for Brokenshire College of Medicine &mdash; actual accommodation, travel and living costs vary by lifestyle. Your counsellor will confirm exact figures on the call.</p>
+
+        <button type="button" class="lp-download-btn mb-2" id="downloadHandbookBtn"><i class="bi bi-download me-2"></i>Download the Full MBBS Abroad Handbook</button>
+        <div class="lp-contact-row">
+          <a href="https://wa.me/919360859919?text=Hi%2C%20I%20just%20saw%20the%20cost%20breakdown%20and%20want%20to%20know%20more" target="_blank" rel="noopener" class="btn" style="background:#25d366; color:#fff; font-weight:700;"><i class="bi bi-whatsapp me-1"></i>WhatsApp</a>
+          <a href="tel:+919360859919" class="btn btn-ghost-jade"><i class="bi bi-telephone-fill me-1"></i>Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lp-section">
+  <div class="lp-trust-row">
+    <span class="lp-trust-pill"><i class="bi bi-patch-check-fill"></i> NMC / WHO Recognised</span>
+    <span class="lp-trust-pill"><i class="bi bi-cash-coin"></i> No Donation Policy</span>
+    <span class="lp-trust-pill"><i class="bi bi-people-fill"></i> 100+ Students Placed</span>
+  </div>
+
+  <div class="lp-testimonial">
+    <p>"The guidance from Mathura Overseas was exceptional &mdash; from application to visa, everything was handled professionally."</p>
+    <strong class="text-jade">Priyadharshini Sekar</strong> <span class="text-muted small">&mdash; MD Student, Davao Medical School Foundation</span>
+  </div>
+</div>
+
+<footer class="lp-footer">
+  &copy; 2026 Mathura Overseas &middot; <a href="index.html">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
+
+<iframe name="lpHiddenFrame" style="display:none;"></iframe>
+
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('lpUtmSource').value = params.get('utm_source') || '';
+    document.getElementById('lpUtmCampaign').value = params.get('utm_campaign') || '';
+  })();
+
+  document.getElementById('revealFormBtn').addEventListener('click', function () {
+    document.getElementById('lpFormPanel').classList.add('show');
+    this.style.display = 'none';
+  });
+
+  const LP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCOsOfBCnl-kq1d9Zn8oGreenZmzEZxzIxcLXJjoZr7koM7FVQgNb89d6luWzHLSHf/exec';
+  const HANDBOOK_PDF_PATH = 'assets/downloads/mathura-overseas-mbbs-handbook-2026-27.pdf';
+
+  document.getElementById('lpForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('lpSubmittedAt').value = new Date().toISOString();
+    const btn = document.getElementById('lpSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Loading...';
+
+    if (LP_SCRIPT_URL.indexOf('PASTE_YOUR') !== 0) {
+      this.action = LP_SCRIPT_URL;
+      this.method = 'POST';
+      this.target = 'lpHiddenFrame';
+      this.submit();
+    }
+
+    setTimeout(function () {
+      document.getElementById('teaserTable').style.display = 'none';
+      document.querySelector('.cost-bubbles').style.display = 'none';
+      document.getElementById('lpFormPanel').classList.remove('show');
+      document.getElementById('lpRevealPanel').classList.add('show');
+      document.querySelector('.cost-card-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
+  });
+
+  document.getElementById('downloadHandbookBtn').addEventListener('click', function () {
+    const btn = this;
+    btn.disabled = true;
+    btn.innerHTML = 'Preparing download...';
+    const a = document.createElement('a');
+    a.href = HANDBOOK_PDF_PATH;
+    a.download = 'Mathura-Overseas-MBBS-Handbook-2026-27.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Downloaded!';
+      setTimeout(function () { btn.innerHTML = '<i class="bi bi-download me-2"></i>Download the Full MBBS Abroad Handbook'; }, 2000);
+    }, 500);
+  });
+</script>
+</body>
+</html>
