@@ -11,7 +11,7 @@
 const CONFIG = {
   // 1. Follow GOOGLE_SHEETS_SETUP.md to deploy the Apps Script.
   // 2. Paste the resulting Web App URL here, replacing the placeholder.
-  GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzCOsOfBCnl-kq1d9Zn8oGreenZmzEZxzIxcLXJjoZr7koM7FVQgNb89d6luWzHLSHf/exec'
+  GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby4DMxDgR5Fd0aBdzN_WcCmr64gLTcZM-kMmXZfWFoMkwvaHvbrsCUEw2wWbKc4DoWM/exec'
 };
 
 document.addEventListener('DOMContentLoaded', function () {
