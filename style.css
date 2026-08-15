@@ -1252,3 +1252,51 @@ body.mobile-nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
   .shift-card{ flex-direction:column; }
   .shift-delta{ transform:rotate(90deg); padding:6px 0; }
 }
+
+/* Mobile view: up to 600px width Neet update posts*/
+@media (max-width: 600px) {
+  .news-row {
+    display: block; /* ensure normal flow */
+  }
+  
+  .news-row-date {
+    display: inline-block;
+    width: auto;
+    margin-right: 8px;
+    vertical-align: top;
+    background: transparent; /* remove background if any */
+    padding: 0;
+    border: none;
+  }
+  
+  .news-row-date .day,
+  .news-row-date .month {
+    display: inline;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .news-row-date .day::after {
+    content: " ";
+  }
+  
+  .news-row-date .month {
+    text-transform: uppercase;
+  }
+  
+  .news-row-body {
+    display: inline;
+    width: auto;
+  }
+  
+  .news-row-body h6 {
+    display: inline;
+    font-size: 1rem;
+  }
+  
+  .news-row-body h6::before {
+    content: "● "; /* optional bullet or separator */
+    color: #007bff;
+  }
+}
