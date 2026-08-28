@@ -242,6 +242,30 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     });
   });
 
+  /* ---------- Responsive data tables inside news posts ----------
+     Any <table> embedded in a post (fee tables, cutoff-marks tables,
+     timelines) is authored once with a plain <thead>/<th> header row.
+     Here we copy each header's text onto its column's <td>s as a
+     data-label attribute, and a mobile CSS rule (see style.css) uses
+     that to render each row as a small stacked card instead of a wide
+     grid — so no post ever needs its own mobile layout or horizontal
+     scroll, no matter how many columns or rows it has. Rows using
+     colspan (section divider rows) are left alone automatically since
+     their cell count won't match the header count. */
+  document.querySelectorAll('.news-full-text table').forEach(function (table) {
+    const headerCells = table.querySelectorAll('thead th');
+    if (!headerCells.length) return;
+    const labels = Array.prototype.map.call(headerCells, function (th) {
+      return th.textContent.trim();
+    });
+    table.querySelectorAll('tbody tr').forEach(function (tr) {
+      const cells = tr.querySelectorAll('td');
+      if (cells.length !== labels.length) return;
+      cells.forEach(function (td, i) { td.setAttribute('data-label', labels[i]); });
+    });
+    table.style.removeProperty('min-width');
+  });
+
   /* ---------- AI Chat widget ---------- */
   // Paste your deployed Cloudflare Worker URL here once it's live
   // (see /home/claude/ai-chat-worker/worker.js deployment notes).

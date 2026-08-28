@@ -911,6 +911,15 @@ h6{ font-size: .92rem; }
 }
 
 /* ---------- Compact news list (built for high volume — 250-300+ posts) ---------- */
+/* ---------- College-wise marks groups (Management Quota / cutoff-style posts) ---------- */
+.mq-section-divider{
+  font-family: var(--font-display); font-weight:700; color: var(--jade); font-size:.95rem;
+  background: var(--jade-pale); padding:8px 12px; border-radius: var(--radius-sm, 6px);
+  margin:14px 0 10px;
+}
+.mq-college{ margin-bottom:12px; }
+.mq-college-name{ font-weight:700; font-size:.82rem; color: var(--ink); margin-bottom:4px; }
+
 .news-list{ background:#fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid rgba(16,69,60,.06); overflow:hidden; }
 .news-row{
   display:flex; align-items:flex-start; gap:18px; padding:18px 22px;
@@ -1269,50 +1278,150 @@ body.mobile-nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
   .shift-delta{ transform:rotate(90deg); padding:6px 0; }
 }
 
-/* Mobile view: up to 600px width Neet update posts*/
+/* Mobile layout: NEET update post rows (<=600px). The side-by-side
+   date-column + text layout that works on desktop gets cramped on a
+   narrow phone, so below 600px each post becomes its own stacked card:
+   a small date/tag pill on top, then the headline, then the summary —
+   full width, easy to scan, no squeezed columns. */
 @media (max-width: 600px) {
-  .news-row {
-    display: block; /* ensure normal flow */
-  }
-  
-  .news-row-date {
-    display: inline-block;
-    width: auto;
-    margin-right: 8px;
-    vertical-align: top;
-    background: transparent; /* remove background if any */
-    padding: 0;
+  .news-list {
+    background: transparent;
     border: none;
+    box-shadow: none;
+    overflow: visible;
   }
-  
+
+  .news-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 16px;
+    margin: 0 0 12px;
+    background: #fff;
+    border: 1px solid rgba(16, 69, 60, .08);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .news-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .news-row-date {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    text-align: left;
+    padding: 4px 10px;
+    background: var(--jade-pale);
+    border-radius: 999px;
+  }
+
   .news-row-date .day,
   .news-row-date .month {
-    display: inline;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #555;
+    font-size: .7rem;
+    line-height: 1;
+    color: var(--jade);
   }
-  
-  .news-row-date .day::after {
-    content: " ";
-  }
-  
+
   .news-row-date .month {
-    text-transform: uppercase;
+    letter-spacing: .02em;
   }
-  
+
+  .news-row.featured-row .news-row-date {
+    background: rgba(255, 255, 255, .18);
+  }
+
   .news-row-body {
-    display: inline;
-    width: auto;
+    width: 100%;
   }
-  
+
+  .news-row-body .tag-row {
+    margin-bottom: 6px;
+  }
+
   .news-row-body h6 {
-    display: inline;
     font-size: 1rem;
   }
-  
-  .news-row-body h6::before {
-    content: "● "; /* optional bullet or separator */
-    color: #007bff;
+
+  .news-row-body p {
+    font-size: .85rem;
+  }
+
+  .news-row.featured-row {
+    margin: 0 0 12px;
+  }
+
+  /* Any table embedded inside a post's expanded text (fee tables,
+     cutoff-marks tables, timelines) — collapses to stacked cards
+     instead of a wide grid, using the data-label values script.js
+     copies from each table's own header row. No horizontal scroll,
+     regardless of how many columns the table has. */
+  .news-full-text {
+    overflow-x: hidden;
+  }
+
+  .news-full-text table {
+    display: block;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .news-full-text table thead {
+    display: none;
+  }
+
+  .news-full-text table tbody {
+    display: block;
+  }
+
+  .news-full-text table tr {
+    display: block;
+    margin-bottom: 8px;
+    border: 1px solid rgba(16, 69, 60, .12) !important;
+    border-radius: var(--radius-sm, 6px);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Section-divider rows (colspan across all columns) get no data-label,
+     so they stay as a single centered banner line rather than a card row */
+  .news-full-text table tr td[colspan] {
+    display: block !important;
+    text-align: center !important;
+    padding: 8px 10px !important;
+  }
+
+  .news-full-text table td {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    text-align: right !important;
+    padding: 7px 10px !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(16, 69, 60, .08) !important;
+    font-size: .8rem;
+  }
+
+  .news-full-text table tr td:last-child {
+    border-bottom: none !important;
+  }
+
+  .news-full-text table td[data-label]::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-align: left;
+    margin-right: auto;
+    padding-right: 10px;
+  }
+
+  .news-full-text table td[style*="text-align:center"] {
+    justify-content: flex-end;
   }
 }
