@@ -911,14 +911,55 @@ h6{ font-size: .92rem; }
 }
 
 /* ---------- Compact news list (built for high volume — 250-300+ posts) ---------- */
-/* ---------- College-wise marks groups (Management Quota / cutoff-style posts) ---------- */
-.mq-section-divider{
-  font-family: var(--font-display); font-weight:700; color: var(--jade); font-size:.95rem;
-  background: var(--jade-pale); padding:8px 12px; border-radius: var(--radius-sm, 6px);
-  margin:14px 0 10px;
+/* ---------- College-wise marks groups (Management/Government Quota cutoff posts) ----------
+   Elegant card-per-college layout: a small search bar filters cards by college
+   name or category (search-marks.js below), section dividers group Govt vs
+   Self-Financing (or MBBS vs BDS), and each college is a soft-bordered card
+   holding a light, thin-lined table — no thick navy borders. */
+.mq-search-wrap{ position:relative; margin:4px 0 16px; }
+.mq-search-wrap i{
+  position:absolute; left:14px; top:50%; transform:translateY(-50%);
+  color: var(--ink-soft); font-size:.85rem; pointer-events:none;
 }
-.mq-college{ margin-bottom:12px; }
-.mq-college-name{ font-weight:700; font-size:.82rem; color: var(--ink); margin-bottom:4px; }
+.mq-search-input{
+  width:100%; padding:10px 14px 10px 36px; font-size:.85rem;
+  border:1px solid rgba(16,69,60,.16); border-radius:999px;
+  background:#fff; color: var(--ink); outline:none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.mq-search-input:focus{
+  border-color: var(--jade-light); box-shadow: 0 0 0 3px rgba(16,69,60,.08);
+}
+.mq-search-count{ font-size:.72rem; color: var(--ink-soft); margin:6px 2px 0; }
+
+.mq-college-group{ margin-bottom:6px; }
+.mq-section-divider{
+  font-family: var(--font-display); font-weight:700; color: var(--jade); font-size:.9rem;
+  background: var(--jade-pale); padding:7px 12px; border-radius: var(--radius-sm, 8px);
+  margin:16px 0 10px;
+}
+.mq-college{
+  margin-bottom:10px; background:#fff; border:1px solid rgba(16,69,60,.10);
+  border-radius: var(--radius-sm, 10px); overflow:hidden;
+}
+.mq-college-name{
+  font-weight:700; font-size:.8rem; color: var(--ink);
+  padding:9px 12px; background: var(--blush); border-bottom:1px solid rgba(16,69,60,.08);
+}
+.mq-college table{
+  width:100%; border-collapse:collapse; font-size:.78rem; background:#fff;
+}
+.mq-college thead tr{ background: transparent; }
+.mq-college th{
+  padding:6px 12px; text-align:left; font-weight:600; color: var(--ink-soft);
+  border:none; border-bottom:1px solid rgba(16,69,60,.10); background:transparent;
+}
+.mq-college th:not(:first-child), .mq-college td:not(:first-child){ text-align:center; }
+.mq-college td{
+  padding:6px 12px; border:none; border-top:1px solid rgba(16,69,60,.06); color: var(--ink);
+}
+.mq-college tbody tr:nth-child(even) td{ background: rgba(16,69,60,.025); }
+.mq-college td:last-child{ font-weight:700; color: var(--jade); }
 
 .news-list{ background:#fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid rgba(16,69,60,.06); overflow:hidden; }
 .news-row{
@@ -1423,5 +1464,62 @@ body.mobile-nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
 
   .news-full-text table td[style*="text-align:center"] {
     justify-content: flex-end;
+  }
+
+  /* Override: college-marks cards (.mq-college) hold a small, fixed 3-column
+     table (Category/Community, Opening, Closing) — the generic wide-table
+     mobile rule above (stack every cell on its own line) is wrong for this:
+     it turns one compact "BC  604  595" row into three separate stacked
+     lines. Restore real table layout so each row stays one line, and keep
+     the header visible instead of the data-label prefix trick. */
+  .mq-college table {
+    display: table !important;
+  }
+
+  .mq-college table thead {
+    display: table-header-group !important;
+  }
+
+  .mq-college table tbody {
+    display: table-row-group !important;
+  }
+
+  .mq-college table tr {
+    display: table-row !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .mq-college table th,
+  .mq-college table td {
+    display: table-cell !important;
+    padding: 6px 8px !important;
+    font-size: .74rem;
+    border: none !important;
+    border-bottom: 1px solid rgba(16, 69, 60, .06) !important;
+    text-align: center !important;
+  }
+
+  .mq-college table th:first-child,
+  .mq-college table td:first-child {
+    text-align: left !important;
+    padding-left: 12px !important;
+  }
+
+  .mq-college table td:last-child {
+    padding-right: 12px !important;
+  }
+
+  .mq-college table tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  .mq-college table td[data-label]::before {
+    content: none !important;
+  }
+
+  .mq-college table td:last-child {
+    color: var(--jade);
+    font-weight: 700;
   }
 }

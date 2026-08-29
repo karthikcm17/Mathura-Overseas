@@ -266,6 +266,36 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     table.style.removeProperty('min-width');
   });
 
+  /* ---------- College-marks search (Management/Government Quota posts) ----------
+     Generic: any .mq-search-input filters the .mq-college cards inside its
+     own post — matches college name, category, or mark. Whole .mq-college-group
+     sections (with their divider) hide if none of their cards match, so an
+     empty "BDS Colleges" heading never sits above zero results. No per-post
+     wiring needed — every future post with this markup gets search for free. */
+  document.querySelectorAll('.mq-search-input').forEach(function (input) {
+    const container = input.closest('.news-full-text');
+    if (!container) return;
+    const groups = container.querySelectorAll('.mq-college-group');
+    const countEl = container.querySelector('.mq-search-count');
+    input.addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase().trim();
+      let totalVisible = 0;
+      groups.forEach(function (group) {
+        let groupVisible = 0;
+        group.querySelectorAll('.mq-college').forEach(function (card) {
+          const match = !filter || card.textContent.toLowerCase().indexOf(filter) > -1;
+          card.style.display = match ? '' : 'none';
+          if (match) groupVisible++;
+        });
+        group.style.display = groupVisible ? '' : 'none';
+        totalVisible += groupVisible;
+      });
+      if (countEl) {
+        countEl.textContent = filter ? totalVisible + ' college' + (totalVisible === 1 ? '' : 's') + ' found' : '';
+      }
+    });
+  });
+
   /* ---------- AI Chat widget ---------- */
   // Paste your deployed Cloudflare Worker URL here once it's live
   // (see /home/claude/ai-chat-worker/worker.js deployment notes).
