@@ -146,26 +146,41 @@ h6{ font-size: .86rem; }
 .brand-mark-sm{ width:32px; height:32px; }
 .brand-mark-sm i{ font-size:.9rem; }
 
-.footer-brand .brand-mark-sm{
-  background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.06));
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,.35);
-  box-shadow: 0 4px 14px rgba(0,0,0,.25), inset 0 1px 1px rgba(255,255,255,.45);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.footer-brand .brand-mark-sm i{ color: var(--marigold); }
-.footer-brand:hover .brand-mark-sm{
-  transform: scale(1.06);
-  box-shadow: 0 6px 18px rgba(0,0,0,.3), inset 0 1px 1px rgba(255,255,255,.5);
+/* Corporate Minimal Footer */
+.footer-minimal {
+  background: var(--bs-dark, #1a1d20);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1020; /* Ensures footer sits comfortably above standard lower-z-index floating widgets */
 }
 
-.brand-text{ letter-spacing:.01em; }
-.brand-accent{ color: var(--marigold); font-weight:600; }
-.footer-brand{ display:flex; align-items:center; gap:10px; font-size:1.25rem; }
+/* Social links hover effect for corporate polish */
+.footer-social-links a {
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
 
-@media (max-width: 575.98px){
-  .brand-mark{ width:34px; height:34px; }
-  .brand-text{ font-size:1.18rem; }
+.footer-social-links a:hover {
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Footer links style */
+.footer-link {
+  transition: color 0.2s ease;
+}
+.footer-link:hover {
+  color: #fff !important;
+}
+
+/* Mobile layout refinement */
+@media (max-width: 767.98px) {
+  .footer-minimal .row > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 /* nav links: plain color change on hover/active — no underline */
