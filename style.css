@@ -1049,7 +1049,7 @@ h6{ font-size: .92rem; }
   position:absolute; top:-2px; right:-2px; width:16px; height:16px; border-radius:50%;
   background: var(--gold); border:2px solid #fff;
 }
-@media (max-width: 575.98px){ .ai-chat-bubble{ bottom:24px; right:16px; width:50px; height:50px; font-size:1.2rem; } }
+@media (max-width: 575.98px){ .ai-chat-bubble{ bottom:15px; right:10px; width:40px; height:40px; font-size:0.8 rem; } }
 /* Anchored with BOTH top and bottom (not a fixed height) so the browser
    computes the panel's height as whatever fits between them — this makes
    overlapping the navbar or overflowing the bottom of the screen impossible
