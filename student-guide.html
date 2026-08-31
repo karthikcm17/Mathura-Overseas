@@ -97,13 +97,13 @@
   <div class="book-shell">
     <div class="container">
 
-      <div class="handbook-download-bar">
+<div class="handbook-download-bar justify-content-center text-center">
         <div>
           <h5 class="text-jade mb-1"><i class="bi bi-journal-bookmark-fill me-2"></i>MBBS Abroad Handbook 2026-27</h5>
-          <p class="text-muted small mb-0">20 pages &middot; Read online below, or download your own copy.</p>
+          <!-- <p class="text-muted small mb-0">20 pages &middot; Read online below, or download your own copy.</p> -->
         </div>
-        <button type="button" class="btn btn-marigold" id="openDownloadModal"><i
-            class="bi bi-download me-2"></i>Download Handbook</button>
+        <!-- <button type="button" class="btn btn-marigold" id="openDownloadModal"><i
+            class="bi bi-download me-2"></i>Download Handbook</button> -->
       </div>
 
       <div class="book-frame">
@@ -1296,11 +1296,24 @@
 
         </div>
 
+      <!-- Pagination Row -->
       <div class="book-nav">
         <button type="button" class="book-nav-btn" id="bookPrevBtn"><i class="bi bi-arrow-left"></i><span>Back</span></button>
         <span class="book-page-count" id="bookPageCount">Cover</span>
         <button type="button" class="book-nav-btn" id="bookNextBtn"><span>Next</span><i class="bi bi-arrow-right"></i></button>
       </div>
+
+      <!-- Elegant Dedicated Download Banner Below Pagination -->
+      <div class="text-center mt-3 p-3 bg-white rounded-3 shadow-sm border" style="border-color: rgba(16,69,60,0.1) !important;">
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2">
+          <div class="text-start text-sm-start text-center">
+            <span class="d-block fw-semibold text-jade" style="font-size: 0.9rem;"><i class="bi bi-journal-bookmark-fill me-1"></i> Want this offline?</span>
+            <span class="text-muted" style="font-size: 0.8rem;">Get the complete 20-page PDF handbook instantly.</span>
+          </div>
+          <button type="button" class="btn btn-marigold btn-sm px-4 py-2 text-nowrap" id="openDownloadModal">
+            <i class="bi bi-download me-2"></i>Download Handbook
+          </button>
+        </div>
       </div>
 
     </div>
